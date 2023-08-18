@@ -1,2 +1,4 @@
 # Proyecto-ingieneria
-Integrantes
+Integrantes:
+Moises Villarroel
+Francisco Pino
