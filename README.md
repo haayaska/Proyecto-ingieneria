@@ -1,6 +1,6 @@
 # Proyecto-ingenieria
-Integrantes:
-Moises Villarroel
-Francisco Pino
-Bastian Campos
-Jose Alvarado Toro
+Integrantes:\n
+Moises Villarroel \n
+Francisco Pino\n
+Bastian Campos\n
+Jose Alvarado Toro\n
