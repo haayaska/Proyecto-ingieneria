@@ -20,5 +20,5 @@ from proyecto_ingenieria.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("Home/",home)
+    path("home/",home),
 ]
