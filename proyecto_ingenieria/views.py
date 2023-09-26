@@ -19,7 +19,7 @@ def home(request): #Primera vista
     return HttpResponse(inicio)
 
 def test_plantilla(request):
-    plantillaex = open('C:/Users/jalva/Intro/Proyecto-ingieneria/Proyecto-ingieneria/Plantillas/plantilla1.html')
+    plantillaex = open('C:/Proyecto-ingieneria/Plantillas/plantilla1.html')
     template = Template(plantillaex.read())
     plantillaex.close()
     contexto = Context()
@@ -28,7 +28,7 @@ def test_plantilla(request):
 
 def plantilla_parametros(request):
     nombre= 'John Alvarado'
-    plantillaex = open('C:/Users/jalva/Intro/Proyecto-ingieneria/Proyecto-ingieneria/Plantillas/plantillaparametros.html')
+    plantillaex = open('C:/Proyecto-ingieneria/Plantillas/plantillaparametros.html')
     template = Template(plantillaex.read())
     plantillaex.close()
     contexto = Context({'nombreUsuario': nombre})
