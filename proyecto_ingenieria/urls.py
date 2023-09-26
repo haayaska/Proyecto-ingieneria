@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from proyecto_ingenieria.views import home
+from proyecto_ingenieria.views import timezone
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",home),
+    path('timezone/',timezone)
 ]

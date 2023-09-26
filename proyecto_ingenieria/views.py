@@ -1,4 +1,9 @@
 from django.http import HttpResponse
+from django.http import datetime
+
+def timezone(request): #Zona horaria
+    tiempo= "<h1>Tiempo</h1>".format(datetime.datetime.now())
+    return HttpResponse(tiempo)
 
 def home(request): #Primera vista
     1
