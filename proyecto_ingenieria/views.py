@@ -1,22 +1,20 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
-def timezone(request): #Zona horaria
-    tiempo= "<h1>Time: \n {0}</h1>".format(datetime.datetime.now().strftime("%A: %d/%m/%Y Hour:%H:%M"))
-    return HttpResponse(tiempo)
 
 def home(request): #Primera vista
     1
+    tiempo= "<h1>{0}</h1>".format(datetime.datetime.now().strftime("%A: %d/%m/%Y "))
     inicio = """ 
     <html>
     <body>
-    <h1>
-    Smartings
-    <h1>
+        <h1>The LECT Team is working on this web<h1>
+        <h2> Cool things are comming soon...<h2>
     <body>
     <html>
     """
-    return HttpResponse(inicio)
+    texto = inicio + '\n' + tiempo
+    return HttpResponse(texto)
 
 def test_plantilla(request):
     plantillaex = open('C:/Proyecto-ingieneria/Plantillas/plantilla1.html')
