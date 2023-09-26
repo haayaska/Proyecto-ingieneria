@@ -1,19 +1,27 @@
 from django.http import HttpResponse
-from django.http import datetime
-
+import datetime
+from django.template import Template, Context
 def timezone(request): #Zona horaria
-    tiempo= "<h1>Tiempo: {0}</h1>".format(datetime.datetime.now())
+    tiempo= "<h1>Time: \n {0}</h1>".format(datetime.datetime.now().strftime("%A: %d/%m/%Y Hour:%H:%M"))
     return HttpResponse(tiempo)
 
 def home(request): #Primera vista
     1
-    inicio = """ <html>
+    inicio = """ 
+    <html>
     <body>
     <h1>
     Smartings
     <h1>
     <body>
-    <html>"""
-
-    
+    <html>
+    """
     return HttpResponse(inicio)
+
+def test_plantilla(request):
+    plantillaex = open('C:\Users\jalva\intro\Proyecto-ingieneria\Proyecto-ingieneria\platnillas\plantilla1.html')
+    template = Template( plantillaex.read())
+    plantillaex.close()
+    contexto = Context()
+    documento = template.render(contexto)
+    return HttpResponse(documento)

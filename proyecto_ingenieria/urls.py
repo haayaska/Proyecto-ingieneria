@@ -18,9 +18,10 @@ from django.urls import path
 
 from proyecto_ingenieria.views import home
 from proyecto_ingenieria.views import timezone
-
+from proyecto_ingenieria.views import test_plantilla
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",home),
-    path('timezone/',timezone)
+    path('timezone/',timezone),
+    path('test_plantilla', test_plantilla)
 ]
