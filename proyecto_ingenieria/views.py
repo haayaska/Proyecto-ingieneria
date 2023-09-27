@@ -19,16 +19,8 @@ def home(request): #Primera vista
 def test_plantilla(request):
     plantillaex = open('C:/Proyecto-ingieneria/Plantillas/plantilla1.html')
     template = Template(plantillaex.read())
-    plantillaex.close()
+    plantillaex.close() 
     contexto = Context()
     documento = template.render(contexto)
     return HttpResponse(documento)
 
-def plantilla_parametros(request):
-    nombre= 'John Alvarado'
-    plantillaex = open('C:/Proyecto-ingieneria/Plantillas/plantillaparametros.html')
-    template = Template(plantillaex.read())
-    plantillaex.close()
-    contexto = Context({'nombreUsuario': nombre})
-    documento = template.render(contexto)
-    return HttpResponse(documento)
