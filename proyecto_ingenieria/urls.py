@@ -22,6 +22,6 @@ from proyecto_ingenieria.views import Presentacion
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",home),
-    path('test_plantilla', test_plantilla)
-    path("presentacion/",presentacion)
+    path('test_plantilla', test_plantilla),
+    path("presentacion/",Presentacion)
 ]
