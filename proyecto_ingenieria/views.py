@@ -24,3 +24,10 @@ def test_plantilla(request):
     documento = template.render(contexto)
     return HttpResponse(documento)
 
+def presentacion(request):
+    presentacionex = open("plantillas\Presentacion.html")
+    template= Template(presentacionex.read())
+    presentacionex.close()
+    contexto = Context()
+    docfinal = template.render(contexto)
+    return(docfinal)
