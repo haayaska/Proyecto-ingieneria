@@ -18,7 +18,7 @@ from django.urls import path
 
 from proyecto_ingenieria.views import home
 from proyecto_ingenieria.views import test_plantilla
-from proyecto_ingenieria.views import presentacion
+from proyecto_ingenieria.views import Presentacion
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",home),
