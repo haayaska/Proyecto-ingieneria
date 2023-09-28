@@ -21,5 +21,5 @@ from proyecto_ingenieria.views import test_plantilla
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("home/",home),
-    path('test_plantilla/', test_plantilla)
+    path('test_plantilla', test_plantilla)
 ]
