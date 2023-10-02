@@ -61,7 +61,7 @@ header{
     position: fixed;
     top: 0;
     right: 0;
-    width: 30vw;
+    width: 20vw;
     height: 100%;
     background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
     display: flex;
@@ -69,12 +69,12 @@ header{
     justify-content: space-evenly;
     align-items: center;
     box-shadow: 0 0 6px rgba(0, 0, 0, .5);
-    /*transition: transform .3s ease-in-out; */
+    transition: transform .3s ease-in-out; 
     transform: translate(110%);
 }
 
 .spread{
-    transform: translate();
+    transform: translate(0);
 }
 
 .menu-navegacion a{
@@ -160,11 +160,6 @@ header{
     cursor: pointer;
 }
 
-.show{
-    transform: translate(0);
-
-}
-
 .imagen-light{
     position: fixed;
     display: flex;
@@ -177,6 +172,11 @@ header{
     left: 0;
     transform: translate(100%);
     transition: transform .2s ease-in-out;
+
+}
+
+.show{
+    transform: translate(0);
 
 }
 .agregar-imagen{
