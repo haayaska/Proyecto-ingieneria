@@ -63,7 +63,7 @@ header{
     right: 0;
     width: 20vw;
     height: 100%;
-    background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    background-image: linear-gradient(120deg, #41dadf 0%, #41dadf 100%);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
