@@ -121,6 +121,8 @@ header{
 
 .service{
     margin-bottom: 20px;
+
+
 }
 
 .n-service{
@@ -138,7 +140,7 @@ header{
     line-height: 30px;
     margin-right: 5px;
     background-image: linear-gradient(to right, #4facfe 0%, #00f1fe 100%);
-
+    
 }
 
 .galeria{
@@ -213,7 +215,7 @@ header{
 }
 
 .cont-experts{
-    width: 30%;
+    width: 25%;
     text-align: center;
     margin-bottom: 20px;
 
