@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
+from django import requests
+from django.http import JsonResponse
 
 def home(request): #Primera vista
     1
