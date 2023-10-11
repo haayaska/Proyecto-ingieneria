@@ -84,15 +84,19 @@ header{
 }
 
 .titulo{
-    font-size: 60px;
+    font-size: 70px;
     margin-bottom: 15px;
+    font-family: "Bebas Neue";
 
 }
 
 .copy{
     font-weight: 300;
-    font-size: 35px;
+    font-size: 30px;
+    font-family:"Pacifico";
+    color: #000000
 }
+
 
 .subtitulo{
     text-align: center;
@@ -100,6 +104,7 @@ header{
     color:blueviolet;
     margin-bottom: 40px;
     font-size: 40px;
+    font-family: "Oswald";
 
 
 }
@@ -111,7 +116,7 @@ header{
 
 }
 .contenedor-servicio img{
-    width: 40%;
+    width: 25%;
 
 }
 .checklist-servicio{
@@ -301,4 +306,18 @@ footer{
     height: 2px;
     background:#ffff ;
     margin-bottom: 60px;
+}
+
+.img-recomendaciones {
+
+    width: 250px;
+}
+
+.img-recomendaciones2 {
+
+    width: 180px; height: 180px;
+
+
+
+
 }
