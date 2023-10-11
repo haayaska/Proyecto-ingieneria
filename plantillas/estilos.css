@@ -90,13 +90,13 @@ header{
 
 }
 
-.copy{
+.subtitle{
     font-weight: 300;
     font-size: 30px;
     font-family:"Pacifico";
     color: #000000
 }
-
+ 
 
 .subtitulo{
     text-align: center;
@@ -122,6 +122,7 @@ header{
 .checklist-servicio{
     width: 45%;
 
+
 }
 
 .service{
@@ -133,6 +134,7 @@ header{
 .n-service{
     margin-bottom: 7px;
     color: blueviolet;
+  
 }
 
 .number{
@@ -157,6 +159,8 @@ header{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    font-size:17px;
+    
 }
 
 .img-galeria{
@@ -228,7 +232,7 @@ header{
 }
 
 .cont-experts img{
-    width: 80%;
+    width: 60%;
     display: block;
     margin:0 auto;
 
@@ -317,7 +321,50 @@ footer{
 
     width: 180px; height: 180px;
 
-
-
-
 }
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.testimonios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.testimonial {
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.testimonial p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.testimonial cite {
+    font-size: 14px;
+    color: #777;
+}
+
+  
