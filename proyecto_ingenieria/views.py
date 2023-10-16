@@ -2,7 +2,11 @@ from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
 from django import requests
+from django.conf import settings
 from django.http import JsonResponse
+from comunasCordenadas import buscarComuna, regionComunas
+
+
 
 def home(request): #Primera vista
     1
@@ -25,3 +29,14 @@ def Presentacion(request):
     contexto = Context()
     docfinal = template.render(contexto)
     return HttpResponse(docfinal) #Habia un error, no se generaba una httpresponse 
+
+def clima(request):
+    data = buscarComuna(regionComunas)
+    lat = data[1]
+    lon = data[2]
+    api_key = settings.OPENWEATHERKEY
+    url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
+    response = requests.get(url)
+    data = response.json()
+    return JsonResponse(data)
+
