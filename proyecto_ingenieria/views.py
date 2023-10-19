@@ -1,10 +1,10 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
-from django import requests
+import requests
 from django.conf import settings
 from django.http import JsonResponse
-from comunasCordenadas import buscarComuna, regionComunas
+from .comunasCordenadas import buscarComuna, regionComunas
 
 
 
