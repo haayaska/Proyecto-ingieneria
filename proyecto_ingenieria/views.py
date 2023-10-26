@@ -22,7 +22,7 @@ def home(request): #Primera vista
     return HttpResponse(texto)
 
 def Presentacion(request):
-    presentacionex = open("C:/Proyecto-ingieneria/Presentacion.htm") #el path no se detecta, podrian probar si funciona y avisar
+    presentacionex = open('C:/Proyecto-ingieneria/plantillas/Presentacion.html') #el path no se detecta, podrian probar si funciona y avisar
     template= Template(presentacionex.read())                        #cuando lo vayan a probar cambien al path en donde se encuentra el archivo presentacion.html
     presentacionex.close()
     contexto = Context()
