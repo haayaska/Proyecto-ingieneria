@@ -6,7 +6,6 @@ from django.conf import settings
 from django.http import JsonResponse
 
 
-
 def home(request): #Primera vista
     1
     tiempo= "<h1>{0}</h1>".format(datetime.datetime.now().strftime("%A: %d/%m/%Y "))
@@ -23,7 +22,7 @@ def home(request): #Primera vista
 
 def Presentacion(request):
     presentacionex = open('C:/Proyecto-ingieneria/plantillas/Presentacion.html') #el path no se detecta, podrian probar si funciona y avisar
-    template= Template(presentacionex.read())                        #cuando lo vayan a probar cambien al path en donde se encuentra el archivo presentacion.html
+    template= Template(presentacionex.read()) #cuando lo vayan a probar cambien al path en donde se encuentra el archivo presentacion.html
     presentacionex.close()
     contexto = Context()
     docfinal = template.render(contexto)
