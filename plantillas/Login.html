@@ -6,13 +6,21 @@
 <body>
     <h2>Iniciar Sesión</h2>
     <form action="procesar_login.php" method="post">
-        <label for="usuario">Usuario:</label>
-        <input type="text" id="usuario" name="usuario" required>
+
+        <label for="usuario" class="usuario1">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" class="usuario1" required>
         <br>
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required>
+        <label for="contrasena" class="clave">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" class="clave" required>
         <br>
         <input type="submit" value="Iniciar Sesión">
     </form>
+
+        <div class="registro"> 
+
+            ¿Aún no tienes una cuenta? Registrate <a href=""> aquí</a>
+        </div>
+
+   
 </body>
 </html>
