@@ -4,7 +4,6 @@ from django.template import Template, Context
 import requests
 from django.conf import settings
 from django.http import JsonResponse
-from .comunasCordenadas import buscarComuna, regionComunas
 
 
 
@@ -31,12 +30,10 @@ def Presentacion(request):
     return HttpResponse(docfinal) #Habia un error, no se generaba una httpresponse 
 
 def clima(request):
-    data = buscarComuna(regionComunas)
-    lat = data[1]
-    lon = data[2]
-    api_key = settings.OPENWEATHERKEY
+    lat = '-33.0658'
+    lon = '-71.3289' #cordenadas de villa alemana como prueba
+    api_key = str(settings.OPENWEATHERKEY)
     url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
     response = requests.get(url)
     data = response.json()
     return JsonResponse(data)
-
