@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html>
+
 <head>
-    <title>Iniciar Sesión</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet " href="estiloslogin.css">
 </head>
 <body>
-    <h2>Iniciar Sesión</h2>
-    <form action="procesar_login.php" method="post">
+    <div class="formulario"> 
+        <h1>Inicio de sesion</h1>
+        <form method="post">
+            <div class="username">
+                <input type="text" required>
+                <label for="">Nombre de Usuario</label>
 
-        <label for="usuario" class="usuario1">Usuario:</label>
-        <input type="text" id="usuario" name="usuario" class="usuario1" required>
-        <br>
-        <label for="contrasena" class="clave">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" class="clave" required>
-        <br>
-        <input type="submit" value="Iniciar Sesión">
-    </form>
+            </div>
+            <div class="contraseña">
+                <input type="text" required>
+                <label for="">Contraseña</label>
 
-        <div class="registro"> 
-
-            ¿Aún no tienes una cuenta? Registrate <a href=""> aquí</a>
-        </div>
-
-   
+            </div>
+            <div class="registro">Quiero hacer el 
+                <a href="registro.html">registro</a>
+            </div>
+        </form>
+    </div>
+    
 </body>
 </html>

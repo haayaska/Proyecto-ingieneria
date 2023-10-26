@@ -1,0 +1,55 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet " href="estiloslogin.css">
+</head>
+<body>
+    <div class="formulario"> 
+        <h1>Registro</h1>
+        <form method="post">
+            <div class="username">
+                <input type="text" required>
+                <label for="">Nombre de Usuario</label>
+
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Validación de Contraseña</title>
+                    <script>
+                        function validarContraseña() {
+                            var contraseña = document.getElementById('contraseña').value;
+                            var confirmarContraseña = document.getElementById('confirmarContraseña').value;
+                
+                            if (contraseña !== confirmarContraseña) {
+                                alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+                                return false;
+                            }
+                            return true;
+                        }
+                    </script>
+                </head>
+                <body>
+                    <div class="contraseña">
+                        <input type="password" id="contraseña" required>
+                        <label for="contraseña">Contraseña</label>
+                    </div>
+                    <div class="contraseña">
+                        <input type="password" id="confirmarContraseña" required>
+                        <label for="confirmarContraseña">Confirmar contraseña</label>
+                    </div>
+                    <button onclick="return validarContraseña();">Enviar</button>
+                </body>
+                </html>
+                
+
+            </div>
+            <div class="registro">
+                <a href="registro.html">registro</a>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
