@@ -137,3 +137,8 @@ input[type="submit"]:hover{
 
 }
 
+.imagen_redondeada {
+    border-radius: 50%;
+    width: 100px; 
+    height: 100px; 
+}
