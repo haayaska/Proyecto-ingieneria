@@ -8,7 +8,6 @@ from django.shortcuts import render
 import time
 
 def Presentacion(request):
-    apagadoAuto(request)
     return render(request, 'main/Presentacion.html')
 
 def consumo(request):
@@ -102,7 +101,7 @@ def estadoLuz(request):
     datos = response.json()
     contextAmpolleta= {"estado": datos.get('switch', {}).get('value')}
     print(contextAmpolleta)
-    return render(request, 'main/clima.html', contextAmpolleta)
+    return render(request, 'main/estado.html', contextAmpolleta)
 
 
 def apagadoAuto(request):
