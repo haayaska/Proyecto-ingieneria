@@ -7,13 +7,16 @@ from django.http import JsonResponse
 from django.shortcuts import render
 import time
 
-
 def Presentacion(request):
     return render(request, 'main/Presentacion.html')
 
+def consumo(request):
+
+    return('hola')
+
 def clima(request):
-    lat = '-33.0475'
-    lon = '-71.4422' 
+    lat = '-33.0333'
+    lon = '-71.6667' 
     api_key = str(settings.OPENWEATHERKEY)
     url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
     response = requests.get(url)
@@ -38,10 +41,39 @@ def clima(request):
         if llave==descripcion:
             descripcion= (tipos_climas[llave])[0]
     ciudad = data.get('name')
-    context = {
+    contextClima = {
     'temperatura': temperatura_celcius,
     'descripcion': descripcion,
     'ciudad': ciudad
     }
-    return render(request, 'main/clima.html', context)
+    return render(request, 'main/clima.html', contextClima)
 
+def estadoLuz(request):
+    deviceId = str(settings.DEVICE_ID)
+    tk= 'Bearer ' + str(settings.SMART_THINGSTK)
+    print(tk)
+    url= f'https://api.smartthings.com/v1/devices/{deviceId}/components/main/capabilities/switch/status'
+    response = requests.get(url, headers={"Authorization": tk})
+    datos = response.json()
+    contextAmpolleta= {"estado": datos.get('switch', {}).get('value')}
+    return render(request, 'main/estados.html', contextAmpolleta)
+
+
+def apagadoAuto(request):
+    deviceId = str(settings.DEVICE_ID)
+    tk= 'Bearer ' + str(settings.SMART_THINGSTK)
+    body = {
+    "commands": [
+        {
+        "component": "main",
+        "capability": "switch",
+        "command": "off",
+        "arguments": []
+        }
+    ]
+    }
+    url= f'https://api.smartthings.com/v1/devices/{deviceId}/commands'
+    response = requests.post(url,json=body, headers={"Authorization": tk})
+    print(response.json())
+    texto= 'aceptado'
+    return(texto)

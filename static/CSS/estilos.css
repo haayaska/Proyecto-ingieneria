@@ -22,7 +22,7 @@
 }
 header{
     height: 100vh;
-    background-image: linear-gradient(to right, #43e97a56 0%, #38f9d61e 100%), url(img/imagen\ inicio.jpeg);
+    background-image: linear-gradient(to right, #43e97a56 0%, #38f9d61e 100%), url(https://www.norteyenergia.cl/wp-content/uploads/2021/11/7C37E211-7C94-4F03-834E-6887AADBB9E9.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;

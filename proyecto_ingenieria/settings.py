@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
+import mimetypes
+
+mimetypes.add_type("text/html", ".jpeg", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,6 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c=gi8g-i9qf!)*w@5^$wv(shv_s_4#dr4bpgxy7(h7q7d68n*x'
 OPENWEATHERKEY = '8e753198f0a8e58589524231cf8571dc'
+SMART_THINGSTK = 'dd5fd18a-0e3f-4eaf-97f6-0309c4262704'
+DEVICE_ID = '5c5b417b-3450-41d7-a9e9-8b5eaadeb141'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -125,7 +130,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
