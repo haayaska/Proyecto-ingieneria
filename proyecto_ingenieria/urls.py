@@ -22,4 +22,5 @@ urlpatterns = [
     path("presentacion/",Presentacion),
     path ("clima/", clima),
     path ('estado/', estadoLuz),
+    path('consumo/',consumo )
 ]
