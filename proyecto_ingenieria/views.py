@@ -8,6 +8,7 @@ from django.shortcuts import render
 import time
 
 def Presentacion(request):
+    apagadoAuto(request)
     return render(request, 'main/Presentacion.html')
 
 def consumo(request):
@@ -46,16 +47,17 @@ def clima(request):
     'descripcion': descripcion,
     'ciudad': ciudad
     }
+    print(contextClima)
     return render(request, 'main/clima.html', contextClima)
 
 def estadoLuz(request):
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
-    print(tk)
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/components/main/capabilities/switch/status'
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     contextAmpolleta= {"estado": datos.get('switch', {}).get('value')}
+    print(contextAmpolleta)
     return render(request, 'main/estados.html', contextAmpolleta)
 
 
