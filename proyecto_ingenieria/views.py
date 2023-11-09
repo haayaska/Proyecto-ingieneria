@@ -9,8 +9,11 @@ import requests
 from .models import UserProfile
 from django.http import HttpResponse
 
-def Presentacion(request):
+def presentacion(request):
     return render(request, 'main/Presentacion.html')
+def login(request):
+    return render(request, 'main/login2.html' )
+
 
 def consumo(request):
     #aqui esta la api de openweather:

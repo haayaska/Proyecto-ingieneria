@@ -19,9 +19,12 @@ from proyecto_ingenieria.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("presentacion/",Presentacion),
-    path("",Presentacion),
+    path("presentacion/",presentacion),
+    path("",presentacion),
+    path('consumo/',consumo ),
+    path('login/', login),
+    path('login/registro/', registro)
     #path ("clima/", clima), son de prueba asi que tranca
     #path ('estado/', estadoLuz),
-    path('consumo/',consumo )
+    
 ]
