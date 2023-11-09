@@ -23,7 +23,7 @@ urlpatterns = [
     path("",presentacion),
     path('consumo/',consumo ),
     path('login/', login),
-    path('login/registro/', registro)
+    path('registro/', registro)
     #path ("clima/", clima), son de prueba asi que tranca
     #path ('estado/', estadoLuz),
     
