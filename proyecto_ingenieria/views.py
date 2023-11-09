@@ -48,7 +48,7 @@ def consumo(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     estado= datos.get('switch', {}).get('value')
-    hora_actual = 8
+    hora_actual = int((datetime.datetime.now()).hour)
     if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
         apagadoAuto(request)
         estado = "off"
@@ -128,8 +128,8 @@ def registro(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
-        region = request.POST['region']
-        comuna = request.POST['comuna']
+        region = request.POST['region'] #recuerden que este parametro no debe ser escrito, si no que seleccionado
+        comuna = request.POST['comuna'] #este igual jejeje
         Smart_id = request.POST['Smart_ID']
         Smart_tkn = request.POST['Smart_tkn']
         return HttpResponse("Registro exitoso")  # Puedes redirigir a otra página de éxito si lo deseas
