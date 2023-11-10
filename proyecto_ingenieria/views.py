@@ -99,7 +99,6 @@ def clima(request):
     'ciudad': ciudad
     }
     return render(request, 'main/clima.html', contextClima)
-
 def estadoLuz(request):
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
@@ -138,3 +137,4 @@ def registro(request):
         Smart_tkn = request.POST['Smart_tkn']
         return HttpResponse("Registro exitoso") 
     return render(request, 'main/registro.html')
+
