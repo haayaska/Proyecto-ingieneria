@@ -6,14 +6,14 @@ from django.shortcuts import render
 import time
 import datetime
 import requests
-from .models import UserProfile
 from django.http import HttpResponse
+from app.models import *
 
 def presentacion(request):
+    print(request.POST)
     return render(request, 'main/Presentacion.html')
 def login(request):
     return render(request, 'main/login2.html' )
-
 
 def consumo(request):
     #aqui esta la api de openweather:
@@ -135,5 +135,5 @@ def registro(request):
         comuna = request.POST['comuna'] #este igual jejeje
         Smart_id = request.POST['Smart_ID']
         Smart_tkn = request.POST['Smart_tkn']
-        return HttpResponse("Registro exitoso")  # Puedes redirigir a otra página de éxito si lo deseas
-    return render(request, 'registro.html')
+        return HttpResponse("Registro exitoso") 
+    return render(request, 'main/registro.html')
