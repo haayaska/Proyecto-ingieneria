@@ -39,6 +39,7 @@ def consumo(request):
                     "showers": ('Chubascos', 3),
                     "snow": ('Nieve', 4 ), 
                     "thunderstorm": ('Tormenta Electrica', 4),
+                    "broken clouds": ('Nubes Dispersas', 0)
                       }
     for llave in tipos_climas:
         if llave==descripcion:
