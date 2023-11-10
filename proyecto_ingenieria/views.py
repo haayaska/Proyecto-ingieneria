@@ -26,6 +26,7 @@ def consumo(request):
     temperatura_kelvin = datas.get('main', {}).get('temp') #esto sacara del json el valor de la temperatura en kelvin
     temperatura_celcius = round(temperatura_kelvin - 273.15) #transformara la temperatura de kelvin a celcius
     descripcion = datas.get('weather', [])[0].get('description') #sacara del json la descripcion del clima
+    hora_actual = int((datetime.datetime.now()).hour)
     tipos_climas = {"clear sky": ('Despejado', 0),
                     "broken clouds": ('Nubes Dispersas', 0),
                     "few clouds": ('Unas Pocas Nubes', 0),
@@ -63,10 +64,14 @@ def consumo(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     estado= datos.get('switch', {}).get('value')
-    hora_actual = int((datetime.datetime.now()).hour)
     if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
-        apagadoAuto(request)
+        off= 'off'
+        apagadoAuto(request, off)
         estado = "off"
+    if (numero!= 0) and (estado == "off") and (hora_actual>21):
+        on= 'on'
+        apagadoAuto(request, on)
+        estado= "on"
     #diccionario context con todos los datos para la pagina de consumo
     context = {
     'temperatura': temperatura_celcius,
@@ -117,9 +122,9 @@ def estadoLuz(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     contextAmpolleta= {"estado": datos.get('switch', {}).get('value')}
-    return render(request, 'main/estado.html', contextAmpolleta)
+    return contextAmpolleta
 
-def apagadoAuto(request):
+def apagadoAuto(request, onOrOff):
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
     body = {
@@ -127,15 +132,14 @@ def apagadoAuto(request):
         {
         "component": "main",
         "capability": "switch",
-        "command": "off",
+        "command": onOrOff,
         "arguments": []
         }
     ]
     }
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/commands'
     response = requests.post(url,json=body, headers={"Authorization": tk})
-    texto= 'aceptado'
-    return(texto)
+    return 
 
 def registro(request):
     if request.method == 'POST':
