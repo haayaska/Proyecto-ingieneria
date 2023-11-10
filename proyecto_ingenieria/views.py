@@ -28,18 +28,29 @@ def consumo(request):
     descripcion = datas.get('weather', [])[0].get('description') #sacara del json la descripcion del clima
     print(descripcion)
     tipos_climas = {"clear sky": ('Despejado', 0),
+                    "broken clouds": ('Nubes Dispersas', 0),
+                    "few clouds": ('Unas Pocas Nubes', 0),
+                    "scattered clouds": ('Nubes Dispersas', 0),
                     "partly cloudy": ('Parcialmente Nublado', 0 ),
                     'overcast clouds': ('Nublado', 1),
                     "clouds": ('Nublado', 1 ),
                     "fog": ('Niebla', 2),
                     "mist": ('Neblina', 2 ),
-                    "drizzle": ('Llovizna', 3), 
+                    "drizzle": ('Llovizna', 3),
+                    "light rain": ('Llovizna', 3), 
                     "rain": ('Lluvioso', 3),
                     'moderate rain': ('Lluvia Moderada', 3),
+                    "heavy intensity rain":('Lluvia Fuerte', 3),
+                    "very heavy rain":('Lluvia Fuerte', 3),
+                    "extreme rain":('Lluvia Fuerte', 3),
+                    "freezing rain": ('Lluvia Fuerte', 3),
+                    "heavy intensity shower rain":('Lluvia Fuerte', 3),
+                    "ragged shower rain":('Lluvia Fuerte', 3),
+                    "shower rain":('Lluvia', 3),
                     "showers": ('Chubascos', 3),
                     "snow": ('Nieve', 4 ), 
                     "thunderstorm": ('Tormenta Electrica', 4),
-                    "broken clouds": ('Nubes Dispersas', 0)
+                    
                       }
     for llave in tipos_climas:
         if llave==descripcion:
