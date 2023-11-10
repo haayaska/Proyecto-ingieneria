@@ -17,8 +17,8 @@ def login(request):
 
 def consumo(request):
     #aqui esta la api de openweather:
-    lat = '-33.0333'
-    lon = '-71.6667' 
+    lat = '-33.0658'
+    lon = '-71.3289' 
     api_key = str(settings.OPENWEATHERKEY)
     url1 = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
     response = requests.get(url1)
@@ -26,17 +26,18 @@ def consumo(request):
     temperatura_kelvin = datas.get('main', {}).get('temp') #esto sacara del json el valor de la temperatura en kelvin
     temperatura_celcius = round(temperatura_kelvin - 273.15) #transformara la temperatura de kelvin a celcius
     descripcion = datas.get('weather', [])[0].get('description') #sacara del json la descripcion del clima
-    tipos_climas = {"clear sky": ('Despejado', 0), 
-                    "partly cloudy": ('Parcialmente Nublado', 1 ),
-                    'overcast clouds': ('Nublado'),
+    print(descripcion)
+    tipos_climas = {"clear sky": ('Despejado', 0),
+                    "partly cloudy": ('Parcialmente Nublado', 0 ),
+                    'overcast clouds': ('Nublado', 1),
                     "clouds": ('Nublado', 1 ),
-                    "fog": ('Niebla', 1),
-                    "mist": ('Neblina', 1 ),
-                    "drizzle": ('Llovizna', 2), 
-                    "rain": ('Lluvioso', 2),
-                    'moderate rain': ('Lluvia Moderada', 2),
-                    "showers": ('Chubascos', 2),
-                    "snow": ('Nieve', 3 ), 
+                    "fog": ('Niebla', 2),
+                    "mist": ('Neblina', 2 ),
+                    "drizzle": ('Llovizna', 3), 
+                    "rain": ('Lluvioso', 3),
+                    'moderate rain': ('Lluvia Moderada', 3),
+                    "showers": ('Chubascos', 3),
+                    "snow": ('Nieve', 4 ), 
                     "thunderstorm": ('Tormenta Electrica', 4),
                       }
     for llave in tipos_climas:
