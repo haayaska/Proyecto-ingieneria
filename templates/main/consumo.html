@@ -7,11 +7,26 @@
     <h1> {{ ciudad }}</h1>
     <p>Temperatura: {{ temperatura }}°C</p>
     <p>Descripción: {{ descripcion }}</p>
+    {% if numero == 0 %}
+    <p>Accion tomada: Hemos apgado la ampolleta debido a que esta {{descripcion}} y estas en un horario de alta luminosidad </p>
+    {% if (numero == 1)  %}
+        {% if temperatura %}
+        <p>Recomendacion: Si estas usando mas aparatos recomendamos apagar dispositivos que no estes usando </p>
+    {% if numero == 1 %}
+    <p>Recomendacion: Si estas usando mas aparatos recomendamos apagar dispositivos que no estes usando </p>
+    {% if numero == 2 %}
+    <p>Recomendacion: Recomendamos apagar la ampolleta </p>
+    {% if numero == 3 %}
+    <p>Recomendacion: Recomendamos apagar la ampolleta </p>
+    {% if numero == 4 %}
+    <p>Recomendacion: Recomendamos apagar la ampolleta </p>
+    {% endif %}
     <h1>Estado de la Ampolleta</h1>
     {% if estado == "on" %}
     <p>Ampolleta: Encendido </p>
     {% else %}
     <p>Ampolleta: Apagado </p>
     {% endif %}
+    
 </body>
 </html>
