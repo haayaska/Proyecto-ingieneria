@@ -26,7 +26,6 @@ def consumo(request):
     temperatura_kelvin = datas.get('main', {}).get('temp') #esto sacara del json el valor de la temperatura en kelvin
     temperatura_celcius = round(temperatura_kelvin - 273.15) #transformara la temperatura de kelvin a celcius
     descripcion = datas.get('weather', [])[0].get('description') #sacara del json la descripcion del clima
-    print(descripcion)
     tipos_climas = {"clear sky": ('Despejado', 0),
                     "broken clouds": ('Nubes Dispersas', 0),
                     "few clouds": ('Unas Pocas Nubes', 0),
