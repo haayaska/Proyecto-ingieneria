@@ -68,7 +68,7 @@ def consumo(request):
         off= 'off'
         apagadoAuto(request, off)
         estado = "off"
-    if (numero!= 0) and (estado == "off") and (hora_actual>21):
+    elif (numero!= 0) and (estado == "off"):
         on= 'on'
         apagadoAuto(request, on)
         estado= "on"
