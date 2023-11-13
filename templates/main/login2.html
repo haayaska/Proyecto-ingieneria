@@ -15,7 +15,7 @@
     <div class="wrapper">
 
         <form action="/presentacion/" method="POST">
-            {% csrf_token %}
+            <!-- {% csrf_token %} -->
             <h1>Login</h1>
             <div class="input-box">
                 <input name="Username" type="text" placeholder="Username" required>
@@ -46,6 +46,48 @@
         </form>
 
     </div>
+
+    <!-- Modal de apagado automático -->
+    <div id="shutdownModal" class="modal">
+        <div class="modal-content">
+            <p>¿Quieres que tu dispositivo se apague automáticamente si es recomendable?</p>
+            <button onclick="handleShutdown('yes')">Sí</button>
+            <button onclick="handleShutdown('no')">No</button>
+        </div>
+    </div>
+
+    <!-- Modal de recomendación -->
+    <div id="recommendationModal" class="modal">
+        <div class="modal-content">
+            <p>Te recomendamos apagar la ampolleta.</p>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function confirmShutdown() {
+            var shutdownModal = document.getElementById('shutdownModal');
+            shutdownModal.style.display = 'flex';
+            return false; // Prevent the form from submitting
+        }
+
+        function handleShutdown(response) {
+            var shutdownModal = document.getElementById('shutdownModal');
+            shutdownModal.style.display = 'none';
+
+            if (response === 'no') {
+                var recommendationModal = document.getElementById('recommendationModal');
+                recommendationModal.style.display = 'flex';
+            } else {
+                document.forms[0].submit(); // Submit the form
+            }
+        }
+
+        function closeModal() {
+            var recommendationModal = document.getElementById('recommendationModal');
+            recommendationModal.style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
