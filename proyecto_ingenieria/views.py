@@ -12,6 +12,7 @@ from app.models import *
 def presentacion(request):
     print(request.POST)
     return render(request, 'main/Presentacion.html')
+
 def login(request):
     return render(request, 'main/login2.html' )
 
