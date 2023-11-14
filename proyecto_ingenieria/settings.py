@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'proyecto_ingenieria',
-    'app'
+    'app',
+    'celery',
+    'miembros',
 ]
 
 MIDDLEWARE = [
