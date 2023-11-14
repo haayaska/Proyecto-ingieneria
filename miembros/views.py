@@ -12,7 +12,7 @@ def inicioSesion(request):
             login(request, user)
             return redirect('presentacion')
         else:
-            messages.success(request, ('El usuario no exites'))
+            messages.success(request, ('El usuario no exite'))
             return redirect('login')
     else:
         return render(request, 'templates/authenticate/login.html', {})
