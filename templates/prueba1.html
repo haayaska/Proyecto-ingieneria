@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #form-container {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        select {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="form-container">
+    <form>
+        <label for="region">Elige tu Región:</label>
+        <select id="region" name="region" onchange="cargarComunas()">
+            <option value="Arica Y Parinacota">Arica y Parinacota</option>
+            <!-- Agrega el resto de las regiones aquí -->
+        </select>
+
+        <label for="comuna">Elige tu Comuna:</label>
+        <select id="comuna" name="comuna">
+            <!-- Este espacio será llenado dinámicamente por JavaScript -->
+        </select>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="button" onclick="enviarFormulario()">Registrarse</button>
+    </form>
+</div>
+
+<script>
+    // Definir un objeto que mapee regiones a comunas y coordenadas
+    const datosPorRegion = {
+        'Arica Y Parinacota': [
+            ['Arica', -18.455, -70.29],
+            ['Camarones', -19.0169, -69.8669],
+            ['Putre', -18.2, -69.5828],
+            ['General Lagos', -17.6528, -69.635],
+            // Agrega las demás comunas y coordenadas
+        ],
+        // Agrega el resto de las regiones aquí
+    };
+
+    function cargarComunas() {
+        const regionSeleccionada = document.getElementById("region").value;
+        const comunasConCoordenadas = datosPorRegion[regionSeleccionada] || [];
+
+        const comunaSelect = document.getElementById("comuna");
+        comunaSelect.innerHTML = ""; // Limpiar opciones anteriores
+
+        for (const [comuna] of comunasConCoordenadas) {
+            const option = document.createElement("option");
+            option.value = comuna;
+            option.text = comuna;
+            comunaSelect.add(option);
+        }
+    }
+
+    function enviarFormulario() {
+        const nombre = document.getElementById("nombre").value;
+        const email = document.getElementById("email").value;
+        const region = document.getElementById("region").value;
+        const comuna = document.getElementById("comuna").value;
+
+        const coordenadas = obtenerCoordenadas(region, comuna);
+
+        console.log("Nombre:", nombre);
+        console.log("Email:", email);
+        console.log("Región:", region);
+        console.log("Comuna:", comuna);
+        console.log("Coordenadas:", coordenadas);
+
+        alert("Registro exitoso");
+    }
+
+    function obtenerCoordenadas(region, comuna) {
+        const comunasConCoordenadas = datosPorRegion[region] || [];
+        const comunaSeleccionada = comunasConCoordenadas.find(([c]) => c === comuna);
+
+        return comunaSeleccionada ? comunaSeleccionada.slice(1) : [];
+    }
+</script>
+
+</body>
+</html>
