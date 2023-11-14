@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import time
 import datetime
 import requests
@@ -10,26 +10,28 @@ from django.http import HttpResponse
 from app.models import *
 
 def presentacion(request):
+    return render(request, 'main/Presentacion.html')
+
+def registro(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password_confirm']:
             user = UserProfile.objects.create_user(username=request.POST['username'],
-                                    email=request.POST['email'],
-                                    password=request.POST['password'],
-                                    region=request.POST['region'],
-                                    comuna=request.POST['comuna'],
-                                    Smart_id=request.POST['smartid'],
-                                    Smart_tkn=request.POST['smarttoken']
-                                    )
+                                                    email=request.POST['email'],
+                                                    password=request.POST['password'],
+                                                    region=request.POST['region'],
+                                                    comuna=request.POST['comuna'],
+                                                    Smart_id=request.POST['smartid'],
+                                                    Smart_tkn=request.POST['smarttoken']
+                                                    )
             user.save()
-            return HttpResponse('Usuario creado')
+            return redirect('consumo')
         else:
-            return HttpResponse('Las contraseñas no coinciden')
-
-
-    return render(request, 'main/Presentacion.html')
+            return HttpResponse('Las contraseñas no concuerdan.')
+    return render(request, 'main/registro.html')
 
 def login(request):
-    return render(request, 'main/login2.html' )
+    print(request.POST)
+    return render(request, 'main/login2.html')
 
 def consumo(request):
     #aqui esta la api de openweather:
@@ -157,15 +159,4 @@ def apagadoAuto(request, onOrOff):
     response = requests.post(url,json=body, headers={"Authorization": tk})
     return 
 
-def registro(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        region = request.POST['region'] #recuerden que este parametro no debe ser escrito, si no que seleccionado
-        comuna = request.POST['comuna'] #este igual jejeje
-        Smart_id = request.POST['Smart_ID']
-        Smart_tkn = request.POST['Smart_tkn']
-        return HttpResponse("Registro exitoso") 
-    return render(request, 'main/registro.html')
 
