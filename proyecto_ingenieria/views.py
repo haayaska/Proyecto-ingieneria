@@ -11,7 +11,7 @@ from app.models import *
 
 def presentacion(request):
     if request.method == 'POST':
-        if request.POST['password'] == request.POST['password2']:
+        if request.POST['password'] == request.POST['password_confirm']:
             user = UserProfile.objects.create_user(username=request.POST['username'],
                                     email=request.POST['email'],
                                     password=request.POST['password'],
