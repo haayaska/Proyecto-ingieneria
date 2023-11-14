@@ -82,14 +82,14 @@ def consumo(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     estado= datos.get('switch', {}).get('value')
-    if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
+    '''if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
         off= 'off'
         apagadoAuto(request, off)
         estado = "off"
     elif (numero!= 0) and (estado == "off"):
         on= 'on'
         apagadoAuto(request, on)
-        estado= "on"
+        estado= "on"'''
     #diccionario context con todos los datos para la pagina de consumo
     context = {
     'temperatura': temperatura_celcius,
