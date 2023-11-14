@@ -15,7 +15,7 @@
     <div class="wrapper">
 
         <form action="/presentacion/" method="POST">
-            <!-- {% csrf_token %} -->
+            {% csrf_token %}
             <h1>Login</h1>
             <div class="input-box">
                 <input name="Username" type="text" placeholder="Username" required>
@@ -30,8 +30,8 @@
 
 
             <div class="remember-forgot">
-                <label> <input type="checkbox">Remember me</label>
-                <a href="#">Forgot password?</a>
+                <label> <input type="checkbox">Recuérdame</label>
+                <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
 
 
@@ -39,15 +39,15 @@
 
 
             <div class="register-link">
-                <p>Don't have an account?
-                <a href=#>Register</a></p>
+                <p>¿Aún no tienes una cuenta?
+                <a href=#>Registrarme</a></p>
             </div>
 
         </form>
 
     </div>
 
-    <!-- Modal de apagado automático -->
+ 
     <div id="shutdownModal" class="modal">
         <div class="modal-content">
             <p>¿Quieres que tu dispositivo se apague automáticamente si es recomendable?</p>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <!-- Modal de recomendación -->
+  
     <div id="recommendationModal" class="modal">
         <div class="modal-content">
             <p>Te recomendamos apagar la ampolleta.</p>
@@ -68,7 +68,7 @@
         function confirmShutdown() {
             var shutdownModal = document.getElementById('shutdownModal');
             shutdownModal.style.display = 'flex';
-            return false; // Prevent the form from submitting
+            return false; 
         }
 
         function handleShutdown(response) {
@@ -79,7 +79,7 @@
                 var recommendationModal = document.getElementById('recommendationModal');
                 recommendationModal.style.display = 'flex';
             } else {
-                document.forms[0].submit(); // Submit the form
+                document.forms[0].submit(); 
             }
         }
 
@@ -91,3 +91,4 @@
 
 </body>
 </html>
+
