@@ -10,7 +10,22 @@ from django.http import HttpResponse
 from app.models import *
 
 def presentacion(request):
-    print(request.POST)
+    if request.method == 'POST':
+        if request.POST['password'] == request.POST['password2']:
+            user = UserProfile.objects.create_user(username=request.POST['username'],
+                                    email=request.POST['email'],
+                                    password=request.POST['password'],
+                                    region=request.POST['region'],
+                                    comuna=request.POST['comuna'],
+                                    Smart_id=request.POST['smartid'],
+                                    Smart_tkn=request.POST['smarttoken']
+                                    )
+            user.save()
+            return HttpResponse('Usuario creado')
+        else:
+            return HttpResponse('Las contraseñas no coinciden')
+
+
     return render(request, 'main/Presentacion.html')
 
 def login(request):

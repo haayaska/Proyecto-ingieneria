@@ -9,40 +9,46 @@
 <body>
     <div class="formulario"> 
         <h1>Registro</h1>
-        <form action="/registro/" method="POST">
+        <form action="/presentacion/" method="POST">
+            {% csrf_token %}
             <div class="username">
-                <input type="text" required>
+                <input name='username' type="text" required>
                 <label for="">Nombre de Usuario</label>
             </div>
 
+            <div class="email">
+                <input name='email' type="text" required>
+                <label for="">Correo electronico</label>
+            </div>
+
             <div class="contraseña">
-                <input type="password" id="contraseña" required>
+                <input name='password' type="password" id="contraseña" required>
                 <label for="contraseña">Contraseña</label>
             </div>
             
             <div class="contraseña">
-                <input type="password" id="confirmarContraseña" required>
+                <input name='password2' type="password" id="confirmarContraseña" required>
                 <label for="confirmarContraseña">Confirmar contraseña</label>
             </div>
 
         
             <div class="region">
-                <input type="text" id="region" required>
+                <input name='region' type="text" id="region" required>
                 <label for="region">Región</label>
             </div>
 
             <div class="comuna">
-                <input type="text" id="comuna" required>
+                <input name='comuna' type="text" id="comuna" required>
                 <label for="comuna">Comuna</label>
             </div>
 
             <div class="smart-id">
-                <input type="text" id="smartId" required>
+                <input name='smartid' type="text" id="smartId" required>
                 <label for="smartId">Smart ID</label>
             </div>
 
             <div class="smart-token">
-                <input type="text" id="smartToken" required>
+                <input name='smarttoken' type="text" id="smartToken" required>
                 <label for="smartToken">Smart Token</label>
             </div>
             
