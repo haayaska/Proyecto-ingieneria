@@ -82,7 +82,7 @@ def consumo(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     estado= datos.get('switch', {}).get('value')
-    if (numero== 0) and (estado == "on") and (8<=hora_actual<20):
+    if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
         off= 'off'
         apagadoAuto(request, off)
         estado = "off"
