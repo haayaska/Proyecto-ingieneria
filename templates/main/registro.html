@@ -36,8 +36,8 @@
         
             <div id="form-container">
                 <form>
-                    <label for="opcion">Elige tu Región:</label>
-                    <select id="opcion" name="opcion">
+                    <label for="region">Elige tu Región:</label>
+                    <select id="region" name="region" onchange="elegirComuna()">
                         <option value="Arica y Parinacota">Arica y Parinacota</option>
                         <option value="Tarapacá">Tarapacá</option>
                         <option value="Antofagasta">Antofagasta</option>
@@ -56,13 +56,413 @@
                         <option value="Magallanes y de la Antártica Chilena">Magallanes y de la Antártica Chilena</option>
                     </select>
             
-                    <button name='region' type="button" onclick="enviarFormulario()">Enviar</button>
-                </form>
-            </div>
+                    <div id="comunas" class="hidden">
+                        <label for="models">Selecciona una comuna:</label>
+                        <select id="models" name="models">
+                            <!-- Additional options will be added here -->
+                        </select>
+                    </div>
+                    
+                    <script>
+                        function elegirComuna() {
+                            var selectedRegion = document.getElementById("region");
+                            var comunasDiv = document.getElementById("comunas");
+                            var modelsSelect = document.getElementById("models");
+            
+                            while (modelsSelect.options.length > 0) {
+                                modelsSelect.options.remove(0);
+                            }
+                    
+                            switch (selectedRegion.value) {
+                                case "Arica y Parinacota":
+                                    modelsSelect.options.add(new Option("Arica", "arica"));
+                                    modelsSelect.options.add(new Option("Camarones", "camarones"));
+                                    modelsSelect.options.add(new Option("Putre", "putre"));
+                                    modelsSelect.options.add(new Option("General Lagos", "generalLagos"));
+                                    break;
+                                case "Tarapacá":
+                                    modelsSelect.options.add(new Option("Iquique", "iquique"));
+                                    modelsSelect.options.add(new Option("Alto Hospicio", "altoHospicio"));
+                                    modelsSelect.options.add(new Option("Pozo Almonte", "pozoAlmonte"));
+                                    modelsSelect.options.add(new Option("Camiña", "camina"));
+                                    modelsSelect.options.add(new Option("Colchane", "colchane"));
+                                    modelsSelect.options.add(new Option("Huara", "huara"));
+                                    modelsSelect.options.add(new Option("Pica", "pica"));
+                                    break;
+                                case "Antofagasta":
+                                    modelsSelect.options.add(new Option("Antofagasta", "antofagasta"));
+                                    modelsSelect.options.add(new Option("Mejillones", "mejillones"));
+                                    modelsSelect.options.add(new Option("Sierra Gorda", "sierraGorda"));
+                                    modelsSelect.options.add(new Option("Taltal", "taltal"));
+                                    modelsSelect.options.add(new Option("Calama", "calama"));
+                                    modelsSelect.options.add(new Option("Ollagüe", "ollague"));
+                                    modelsSelect.options.add(new Option("San Pedro de Atacama", "sanPedroDeAtacama"));
+                                    modelsSelect.options.add(new Option("Tocopilla", "tocopilla"));
+                                    modelsSelect.options.add(new Option("María Elena", "mariaElena"));
+                                    break;
+                                case "Atacama":
+                                    modelsSelect.options.add(new Option("Copiapó", "copiapo"));
+                                    modelsSelect.options.add(new Option("Caldera", "caldera"));
+                                    modelsSelect.options.add(new Option("Tierra Amarilla", "tierraAmarilla"));
+                                    modelsSelect.options.add(new Option("Chañaral", "chanaral"));
+                                    modelsSelect.options.add(new Option("Diego de Almagro", "diegoDeAlmagro"));
+                                    modelsSelect.options.add(new Option("Vallenar", "vallenar"));
+                                    modelsSelect.options.add(new Option("Alto del Carmen", "altoDelCarmen"));
+                                    modelsSelect.options.add(new Option("Freirina", "freirina"));
+                                    modelsSelect.options.add(new Option("Huasco", "huasco"));
+                                    break;
+                                case "Coquimbo":
+                                    modelsSelect.options.add(new Option("La Serena", "laSerena"));
+                                    modelsSelect.options.add(new Option("Coquimbo", "coquimbo"));
+                                    modelsSelect.options.add(new Option("Andacollo", "andacollo"));
+                                    modelsSelect.options.add(new Option("La Higuera", "laHiguera"));
+                                    modelsSelect.options.add(new Option("Paihuano", "paihuano"));
+                                    modelsSelect.options.add(new Option("Vicuña", "vicuna"));
+                                    modelsSelect.options.add(new Option("Illapel", "illapel"));
+                                    modelsSelect.options.add(new Option("Canela", "canela"));
+                                    modelsSelect.options.add(new Option("Los Vilos", "losVilos"));
+                                    modelsSelect.options.add(new Option("Salamanca", "salamanca"));
+                                    modelsSelect.options.add(new Option("Ovalle", "ovalle"));
+                                    modelsSelect.options.add(new Option("Combarbalá", "combarbala"));
+                                    modelsSelect.options.add(new Option("Monte Patria", "montePatria"));
+                                    modelsSelect.options.add(new Option("Punitaqui", "punitaqui"));
+                                    modelsSelect.options.add(new Option("Río Hurtado", "rioHurtado"));
+                                    break;
+                                case "Valparaíso":
+                                    modelsSelect.options.add(new Option("Valparaíso", "valparaiso"));
+                                    modelsSelect.options.add(new Option("Casablanca", "casablanca"));
+                                    modelsSelect.options.add(new Option("Concón", "concon"));
+                                    modelsSelect.options.add(new Option("Juan Fernández", "juanFernandez"));
+                                    modelsSelect.options.add(new Option("Puchuncaví", "puchuncavi"));
+                                    modelsSelect.options.add(new Option("Quintero", "quintero"));
+                                    modelsSelect.options.add(new Option("Viña del Mar", "vinaDelMar"));
+                                    modelsSelect.options.add(new Option("Isla de Pascua", "islaDePascua"));
+                                    modelsSelect.options.add(new Option("Los Andes", "losAndes"));
+                                    modelsSelect.options.add(new Option("Calle Larga", "calleLarga"));
+                                    modelsSelect.options.add(new Option("Rinconada", "rinconada"));
+                                    modelsSelect.options.add(new Option("San Esteban", "sanEsteban"));
+                                    modelsSelect.options.add(new Option("La Ligua", "laLigua"));
+                                    modelsSelect.options.add(new Option("Cabildo", "cabildo"));
+                                    modelsSelect.options.add(new Option("Papudo", "papudo"));
+                                    modelsSelect.options.add(new Option("Petorca", "petorca"));
+                                    modelsSelect.options.add(new Option("Zapallar", "zapallar"));
+                                    modelsSelect.options.add(new Option("Quillota", "quillota"));
+                                    modelsSelect.options.add(new Option("La Calera", "laCalera"));
+                                    modelsSelect.options.add(new Option("Hijuelas", "hijuelas"));
+                                    modelsSelect.options.add(new Option("La Cruz", "laCruz"));
+                                    modelsSelect.options.add(new Option("Nogales", "nogales"));
+                                    modelsSelect.options.add(new Option("San Antonio", "sanAntonio"));
+                                    modelsSelect.options.add(new Option("Algarrobo", "algarrobo"));
+                                    modelsSelect.options.add(new Option("Cartagena", "cartagena"));
+                                    modelsSelect.options.add(new Option("El Quisco", "elQuisco"));
+                                    modelsSelect.options.add(new Option("El Tabo", "elTabo"));
+                                    modelsSelect.options.add(new Option("Santo Domingo", "santoDomingo"));
+                                    modelsSelect.options.add(new Option("San Felipe", "sanFelipe"));
+                                    modelsSelect.options.add(new Option("Catemu", "catemu"));
+                                    modelsSelect.options.add(new Option("Llay-Llay", "llayLlay"));
+                                    modelsSelect.options.add(new Option("Panquehue", "panquehue"));
+                                    modelsSelect.options.add(new Option("Putaendo", "putaendo"));
+                                    modelsSelect.options.add(new Option("Santa María", "santaMaria"));
+                                    modelsSelect.options.add(new Option("Quilpué", "quilpue"));
+                                    modelsSelect.options.add(new Option("Limache", "limache"));
+                                    modelsSelect.options.add(new Option("Olmué", "olmue"));
+                                    modelsSelect.options.add(new Option("Villa Alemana", "villaAlemana"));
+                                    break;
+                                case "Metropolitana":
+                                    modelsSelect.options.add(new Option("Santiago", "santiago"));
+                                    modelsSelect.options.add(new Option("Cerrillos", "cerrillos"));
+                                    modelsSelect.options.add(new Option("Cerro Navia", "cerroNavia"));
+                                    modelsSelect.options.add(new Option("Conchalí", "conchali"));
+                                    modelsSelect.options.add(new Option("El Bosque", "elBosque"));
+                                    modelsSelect.options.add(new Option("Estación Central", "estacionCentral"));
+                                    modelsSelect.options.add(new Option("Huechuraba", "huechuraba"));
+                                    modelsSelect.options.add(new Option("Independencia", "independencia"));
+                                    modelsSelect.options.add(new Option("La Cisterna", "laCisterna"));
+                                    modelsSelect.options.add(new Option("La Florida", "laFlorida"));
+                                    modelsSelect.options.add(new Option("La Granja", "laGranja"));
+                                    modelsSelect.options.add(new Option("La Pintana", "laPintana"));
+                                    modelsSelect.options.add(new Option("La Reina", "laReina"));
+                                    modelsSelect.options.add(new Option("Las Condes", "lasCondes"));
+                                    modelsSelect.options.add(new Option("Lo Barnechea", "loBarnechea"));
+                                    modelsSelect.options.add(new Option("Lo Espejo", "loEspejo"));
+                                    modelsSelect.options.add(new Option("Lo Prado", "loPrado"));
+                                    modelsSelect.options.add(new Option("Macul", "macul"));
+                                    modelsSelect.options.add(new Option("Maipú", "maipu"));
+                                    modelsSelect.options.add(new Option("Ñuñoa", "nunoa"));
+                                    modelsSelect.options.add(new Option("Pedro Aguirre Cerda", "pedroAguirreCerda"));
+                                    modelsSelect.options.add(new Option("Peñalolén", "penalolen"));
+                                    modelsSelect.options.add(new Option("Providencia", "providencia"));
+                                    modelsSelect.options.add(new Option("Pudahuel", "pudahuel"));
+                                    modelsSelect.options.add(new Option("Quilicura", "quilicura"));
+                                    modelsSelect.options.add(new Option("Quinta Normal", "quintaNormal"));
+                                    modelsSelect.options.add(new Option("Recoleta", "recoleta"));
+                                    modelsSelect.options.add(new Option("Renca", "renca"));
+                                    modelsSelect.options.add(new Option("San Joaquín", "sanJoaquin"));
+                                    modelsSelect.options.add(new Option("San Miguel", "sanMiguel"));
+                                    modelsSelect.options.add(new Option("San Ramón", "sanRamon"));
+                                    modelsSelect.options.add(new Option("Vitacura", "vitacura"));
+                                    modelsSelect.options.add(new Option("Puente Alto", "puenteAlto"));
+                                    modelsSelect.options.add(new Option("Pirque", "pirque"));
+                                    modelsSelect.options.add(new Option("San José de Maipo", "sanJoseDeMaipo"));
+                                    modelsSelect.options.add(new Option("Colina", "colina"));
+                                    modelsSelect.options.add(new Option("Lampa", "lampa"));
+                                    modelsSelect.options.add(new Option("Til Til", "tilTil"));
+                                    modelsSelect.options.add(new Option("San Bernardo", "sanBernardo"));
+                                    modelsSelect.options.add(new Option("Buin", "buin"));
+                                    modelsSelect.options.add(new Option("Calera de Tango", "caleraDeTango"));
+                                    modelsSelect.options.add(new Option("Paine", "paine"));
+                                    modelsSelect.options.add(new Option("Melipilla", "melipilla"));
+                                    modelsSelect.options.add(new Option("Alhué", "alhue"));
+                                    modelsSelect.options.add(new Option("Curacaví", "curacavi"));
+                                    modelsSelect.options.add(new Option("María Pinto", "mariaPinto"));
+                                    modelsSelect.options.add(new Option("San Pedro", "sanPedro"));
+                                    modelsSelect.options.add(new Option("Talagante", "talagante"));
+                                    modelsSelect.options.add(new Option("El Monte", "elMonte"));
+                                    modelsSelect.options.add(new Option("Isla de Maipo", "islaDeMaipo"));
+                                    modelsSelect.options.add(new Option("Padre Hurtado", "padreHurtado"));
+                                    modelsSelect.options.add(new Option("Peñaflor", "penaflor"));
+                                    break;
+                                case "O'Higgins":
+                                    modelsSelect.options.add(new Option("Rancagua", "rancagua"));
+                                    modelsSelect.options.add(new Option("Codegua", "codegua"));
+                                    modelsSelect.options.add(new Option("Coinco", "coinco"));
+                                    modelsSelect.options.add(new Option("Coltauco", "coltauco"));
+                                    modelsSelect.options.add(new Option("Doñihue", "donihue"));
+                                    modelsSelect.options.add(new Option("Graneros", "graneros"));
+                                    modelsSelect.options.add(new Option("Las Cabras", "lasCabras"));
+                                    modelsSelect.options.add(new Option("Machalí", "machali"));
+                                    modelsSelect.options.add(new Option("Malloa", "malloa"));
+                                    modelsSelect.options.add(new Option("Mostazal", "mostazal"));
+                                    modelsSelect.options.add(new Option("Olivar", "olivar"));
+                                    modelsSelect.options.add(new Option("Peumo", "peumo"));
+                                    modelsSelect.options.add(new Option("Pichidegua", "pichidegua"));
+                                    modelsSelect.options.add(new Option("Quinta de Tilcoco", "quintaDeTilcoco"));
+                                    modelsSelect.options.add(new Option("Rengo", "rengo"));
+                                    modelsSelect.options.add(new Option("Requínoa", "requinoa"));
+                                    modelsSelect.options.add(new Option("San Vicente", "sanVicente"));
+                                    modelsSelect.options.add(new Option("Pichilemu", "pichilemu"));
+                                    modelsSelect.options.add(new Option("La Estrella", "laEstrella"));
+                                    modelsSelect.options.add(new Option("Litueche", "litueche"));
+                                    modelsSelect.options.add(new Option("Marchihue", "marchihue"));
+                                    modelsSelect.options.add(new Option("Navidad", "navidad"));
+                                    modelsSelect.options.add(new Option("Paredones", "paredones"));
+                                    modelsSelect.options.add(new Option("San Fernando", "sanFernando"));
+                                    modelsSelect.options.add(new Option("Chépica", "chepica"));
+                                    modelsSelect.options.add(new Option("Chimbarongo", "chimbarongo"));
+                                    modelsSelect.options.add(new Option("Lolol", "lolol"));
+                                    modelsSelect.options.add(new Option("Nancagua", "nancagua"));
+                                    modelsSelect.options.add(new Option("Palmilla", "palmilla"));
+                                    modelsSelect.options.add(new Option("Peralillo", "peralillo"));
+                                    modelsSelect.options.add(new Option("Placilla", "placilla"));
+                                    modelsSelect.options.add(new Option("Pumanque", "pumanque"));
+                                    modelsSelect.options.add(new Option("Santa Cruz", "santacruz"));
+                                    break;
+                                case "Maule":
+                                    modelsSelect.options.add(new Option("Talca", "talca"));
+                                    modelsSelect.options.add(new Option("Constitución", "constitucion"));
+                                    modelsSelect.options.add(new Option("Curepto", "curepto"));
+                                    modelsSelect.options.add(new Option("Empedrado", "empedrado"));
+                                    modelsSelect.options.add(new Option("Maule", "maule"));
+                                    modelsSelect.options.add(new Option("Pelarco", "pelarco"));
+                                    modelsSelect.options.add(new Option("Pencahue", "pencahue"));
+                                    modelsSelect.options.add(new Option("Río Claro", "rioClaro"));
+                                    modelsSelect.options.add(new Option("San Clemente", "sanClemente"));
+                                    modelsSelect.options.add(new Option("San Rafael", "sanRafael"));
+                                    modelsSelect.options.add(new Option("Cauquenes", "cauquenes"));
+                                    modelsSelect.options.add(new Option("Chanco", "chanco"));
+                                    modelsSelect.options.add(new Option("Pelluhue", "pelluhue"));
+                                    modelsSelect.options.add(new Option("Curicó", "curico"));
+                                    modelsSelect.options.add(new Option("Hualañé", "hualane"));
+                                    modelsSelect.options.add(new Option("Licantén", "licanten"));
+                                    modelsSelect.options.add(new Option("Molina", "molina"));
+                                    modelsSelect.options.add(new Option("Rauco", "rauco"));
+                                    modelsSelect.options.add(new Option("Romeral", "romeral"));
+                                    modelsSelect.options.add(new Option("Sagrada Familia", "sagradaFamilia"));
+                                    modelsSelect.options.add(new Option("Teno", "teno"));
+                                    modelsSelect.options.add(new Option("Vichuquén", "vichuquen"));
+                                    modelsSelect.options.add(new Option("Linares", "linares"));
+                                    modelsSelect.options.add(new Option("Colbún", "colbun"));
+                                    modelsSelect.options.add(new Option("Longaví", "longavi"));
+                                    modelsSelect.options.add(new Option("Parral", "parral"));
+                                    modelsSelect.options.add(new Option("Retiro", "retiro"));
+                                    modelsSelect.options.add(new Option("San Javier", "sanJavier"));
+                                    modelsSelect.options.add(new Option("Villa Alegre", "villaAlegre"));
+                                    modelsSelect.options.add(new Option("Yerbas Buenas", "yerbasBuenas"));
+                                    break;
 
-            <div class="comuna">
-                <input name='comuna' type="text" id="comuna" required>
-                <label for="comuna">Comuna</label>
+                                case "Ñuble":
+                                    modelsSelect.options.add(new Option("Chillán", "chillan"));
+                                    modelsSelect.options.add(new Option("Bulnes", "bulnes"));
+                                    modelsSelect.options.add(new Option("Chillán Viejo", "chillanViejo"));
+                                    modelsSelect.options.add(new Option("El Carmen", "elCarmen"));
+                                    modelsSelect.options.add(new Option("Pemuco", "pemuco"));
+                                    modelsSelect.options.add(new Option("Pinto", "pinto"));
+                                    modelsSelect.options.add(new Option("Quillón", "quillon"));
+                                    modelsSelect.options.add(new Option("San Ignacio", "sanIgnacio"));
+                                    modelsSelect.options.add(new Option("Yungay", "yungay"));
+                                    modelsSelect.options.add(new Option("Quirihue", "quirihue"));
+                                    modelsSelect.options.add(new Option("Cobquecura", "cobquecura"));
+                                    modelsSelect.options.add(new Option("Coelemu", "coelemu"));
+                                    modelsSelect.options.add(new Option("Ninhue", "ninhue"));
+                                    modelsSelect.options.add(new Option("Portezuelo", "portezuelo"));
+                                    modelsSelect.options.add(new Option("Ránquil", "ranquil"));
+                                    modelsSelect.options.add(new Option("Treguaco", "treguaco"));
+                                    modelsSelect.options.add(new Option("San Carlos", "sanCarlos"));
+                                    modelsSelect.options.add(new Option("Coihueco", "coihueco"));
+                                    modelsSelect.options.add(new Option("Ñiquén", "niquen"));
+                                    modelsSelect.options.add(new Option("San Fabián", "sanFabian"));
+                                    modelsSelect.options.add(new Option("San Nicolás", "sanNicolás"));
+                                    break;
+                                case "Biobío":
+                                    modelsSelect.options.add(new Option("Concepción", "concepcion"));
+                                    modelsSelect.options.add(new Option("Coronel", "coronel"));
+                                    modelsSelect.options.add(new Option("Chiguayante", "chiguayante"));
+                                    modelsSelect.options.add(new Option("Florida", "florida"));
+                                    modelsSelect.options.add(new Option("Hualqui", "hualqui"));
+                                    modelsSelect.options.add(new Option("Lota", "lota"));
+                                    modelsSelect.options.add(new Option("Penco", "penco"));
+                                    modelsSelect.options.add(new Option("San Pedro de La Paz", "sanPedroDeLaPaz"));
+                                    modelsSelect.options.add(new Option("Santa Juana", "santaJuana"));
+                                    modelsSelect.options.add(new Option("Talcahuano", "talcahuano"));
+                                    modelsSelect.options.add(new Option("Tomé", "tome"));
+                                    modelsSelect.options.add(new Option("Hualpén", "hualpen"));
+                                    modelsSelect.options.add(new Option("Lebu", "lebu"));
+                                    modelsSelect.options.add(new Option("Arauco", "arauco"));
+                                    modelsSelect.options.add(new Option("Cañete", "canete"));
+                                    modelsSelect.options.add(new Option("Contulmo", "contulmo"));
+                                    modelsSelect.options.add(new Option("Curanilahue", "curanilahue"));
+                                    modelsSelect.options.add(new Option("Los Álamos", "losAlamos"));
+                                    modelsSelect.options.add(new Option("Tirúa", "tirua"));
+                                    modelsSelect.options.add(new Option("Los Ángeles", "losAngeles"));
+                                    modelsSelect.options.add(new Option("Antuco", "antuco"));
+                                    modelsSelect.options.add(new Option("Cabrero", "cabrero"));
+                                    modelsSelect.options.add(new Option("Laja", "laja"));
+                                    modelsSelect.options.add(new Option("Mulchén", "mulchen"));
+                                    modelsSelect.options.add(new Option("Nacimiento", "nacimiento"));
+                                    modelsSelect.options.add(new Option("Negrete", "negrete"));
+                                    modelsSelect.options.add(new Option("Quilaco", "quilaco"));
+                                    modelsSelect.options.add(new Option("Quilleco", "quilleco"));
+                                    modelsSelect.options.add(new Option("San Rosendo", "sanRosendo"));
+                                    modelsSelect.options.add(new Option("Santa Bárbara", "santaBarbara"));
+                                    modelsSelect.options.add(new Option("Tucapel", "tucapel"));
+                                    modelsSelect.options.add(new Option("Yumbel", "yumbel"));
+                                    modelsSelect.options.add(new Option("Alto Biobío", "altoBiobio"));
+                                    break;
+                                case "La Araucanía":
+                                    modelsSelect.options.add(new Option("Temuco", "temuco"));
+                                    modelsSelect.options.add(new Option("Carahue", "carahue"));
+                                    modelsSelect.options.add(new Option("Cunco", "cunco"));
+                                    modelsSelect.options.add(new Option("Curarrehue", "curarrehue"));
+                                    modelsSelect.options.add(new Option("Freire", "freire"));
+                                    modelsSelect.options.add(new Option("Galvarino", "galvarino"));
+                                    modelsSelect.options.add(new Option("Gorbea", "gorbea"));
+                                    modelsSelect.options.add(new Option("Lautaro", "lautaro"));
+                                    modelsSelect.options.add(new Option("Loncoche", "loncoche"));
+                                    modelsSelect.options.add(new Option("Melipeuco", "melipeuco"));
+                                    modelsSelect.options.add(new Option("Nueva Imperial", "nuevaImperial"));
+                                    modelsSelect.options.add(new Option("Padre Las Casas", "padreLasCasas"));
+                                    modelsSelect.options.add(new Option("Perquenco", "perquenco"));
+                                    modelsSelect.options.add(new Option("Pitrufquén", "pitrufquen"));
+                                    modelsSelect.options.add(new Option("Pucón", "pucon"));
+                                    modelsSelect.options.add(new Option("Saavedra", "saavedra"));
+                                    modelsSelect.options.add(new Option("Teodoro Schmidt", "teodoroSchmidt"));
+                                    modelsSelect.options.add(new Option("Toltén", "tolten"));
+                                    modelsSelect.options.add(new Option("Vilcún", "vilcun"));
+                                    modelsSelect.options.add(new Option("Villarrica", "villarrica"));
+                                    modelsSelect.options.add(new Option("Cholchol", "cholchol"));
+                                    modelsSelect.options.add(new Option("Angol", "angol"));
+                                    modelsSelect.options.add(new Option("Collipulli", "collipulli"));
+                                    modelsSelect.options.add(new Option("Curacautín", "curacautin"));
+                                    modelsSelect.options.add(new Option("Ercilla", "ercilla"));
+                                    modelsSelect.options.add(new Option("Lonquimay", "lonquimay"));
+                                    modelsSelect.options.add(new Option("Los Sauces", "losSauces"));
+                                    modelsSelect.options.add(new Option("Lumaco", "lumaco"));
+                                    modelsSelect.options.add(new Option("Purén", "puren"));
+                                    modelsSelect.options.add(new Option("Renaico", "renaico"));
+                                    modelsSelect.options.add(new Option("Traiguén", "traiguen"));
+                                    modelsSelect.options.add(new Option("Victoria", "victoria"));
+                                    break;
+                                case "Los Ríos":
+                                    modelsSelect.options.add(new Option("Valdivia", "valdivia"));
+                                    modelsSelect.options.add(new Option("Corral", "corral"));
+                                    modelsSelect.options.add(new Option("Lanco", "lanco"));
+                                    modelsSelect.options.add(new Option("Los Lagos", "losLagos"));
+                                    modelsSelect.options.add(new Option("Máfil", "mafil"));
+                                    modelsSelect.options.add(new Option("Mariquina", "mariquina"));
+                                    modelsSelect.options.add(new Option("Paillaco", "paillaco"));
+                                    modelsSelect.options.add(new Option("Panguipulli", "panguipulli"));
+                                    modelsSelect.options.add(new Option("La Unión", "laUnion"));
+                                    modelsSelect.options.add(new Option("Futrono", "futrono"));
+                                    modelsSelect.options.add(new Option("Lago Ranco", "lagoRanco"));
+                                    modelsSelect.options.add(new Option("Río Bueno", "rioBueno"));
+                                    break;
+                                case "Los Lagos":
+                                    modelsSelect.options.add(new Option("Puerto Montt", "puertoMontt"));
+                                    modelsSelect.options.add(new Option("Calbuco", "calbuco"));
+                                    modelsSelect.options.add(new Option("Cochamó", "cochamo"));
+                                    modelsSelect.options.add(new Option("Fresia", "fresia"));
+                                    modelsSelect.options.add(new Option("Frutillar", "frutillar"));
+                                    modelsSelect.options.add(new Option("Los Muermos", "losMuermos"));
+                                    modelsSelect.options.add(new Option("Llanquihue", "llanquihue"));
+                                    modelsSelect.options.add(new Option("Maullín", "maullin"));
+                                    modelsSelect.options.add(new Option("Puerto Varas", "puertoVaras"));
+                                    modelsSelect.options.add(new Option("Castro", "castro"));
+                                    modelsSelect.options.add(new Option("Ancud", "ancud"));
+                                    modelsSelect.options.add(new Option("Chonchi", "chonchi"));
+                                    modelsSelect.options.add(new Option("Curaco de Vélez", "curacoDeVelez"));
+                                    modelsSelect.options.add(new Option("Dalcahue", "dalcahue"));
+                                    modelsSelect.options.add(new Option("Puqueldón", "puqueldon"));
+                                    modelsSelect.options.add(new Option("Queilén", "queilen"));
+                                    modelsSelect.options.add(new Option("Quellón", "quellon"));
+                                    modelsSelect.options.add(new Option("Quemchi", "quemchi"));
+                                    modelsSelect.options.add(new Option("Quinchao", "quinchao"));
+                                    modelsSelect.options.add(new Option("Osorno", "osorno"));
+                                    modelsSelect.options.add(new Option("Puerto Octay", "puertoOctay"));
+                                    modelsSelect.options.add(new Option("Purranque", "purranque"));
+                                    modelsSelect.options.add(new Option("Puyehue", "puyehue"));
+                                    modelsSelect.options.add(new Option("Río Negro", "rioNegro"));
+                                    modelsSelect.options.add(new Option("San Juan de la Costa", "sanJuanDeLaCosta"));
+                                    modelsSelect.options.add(new Option("San Pablo", "sanPablo"));
+                                    modelsSelect.options.add(new Option("Chaitén", "chaiten"));
+                                    modelsSelect.options.add(new Option("Futaleufú", "futaleufu"));
+                                    modelsSelect.options.add(new Option("Hualaihué", "hualaihue"));
+                                    modelsSelect.options.add(new Option("Palena", "palena"));
+                                    break;
+                                case "Aysén del General Carlos Ibáñez del Campo":
+                                    modelsSelect.options.add(new Option("Coyhaique", "coyhaique"));
+                                    modelsSelect.options.add(new Option("Lago Verde", "lagoVerde"));
+                                    modelsSelect.options.add(new Option("Aysén", "aysen"));
+                                    modelsSelect.options.add(new Option("Cisnes", "cisnes"));
+                                    modelsSelect.options.add(new Option("Guaitecas", "guaitecas"));
+                                    modelsSelect.options.add(new Option("Cochrane", "cochrane"));
+                                    modelsSelect.options.add(new Option("O'Higgins", "ohiggins"));
+                                    modelsSelect.options.add(new Option("Tortel", "tortel"));
+                                    modelsSelect.options.add(new Option("Chile Chico", "chileChico"));
+                                    modelsSelect.options.add(new Option("Río Ibáñez", "rioIbanez"));
+                                    break;
+                                case "Magallanes y de la Antártica Chilena":
+                                    modelsSelect.options.add(new Option("Punta Arenas", "puntaArenas"));
+                                    modelsSelect.options.add(new Option("Laguna Blanca", "lagunaBlanca"));
+                                    modelsSelect.options.add(new Option("Río Verde", "rioVerde"));
+                                    modelsSelect.options.add(new Option("San Gregorio", "sanGregorio"));
+                                    modelsSelect.options.add(new Option("Cabo de Hornos", "caboDeHornos"));
+                                    modelsSelect.options.add(new Option("Antártica", "antartica"));
+                                    modelsSelect.options.add(new Option("Porvenir", "porvenir"));
+                                    modelsSelect.options.add(new Option("Primavera", "primavera"));
+                                    modelsSelect.options.add(new Option("Timaukel", "timaukel"));
+                                    modelsSelect.options.add(new Option("Natales", "natales"));
+                                    modelsSelect.options.add(new Option("Torres del Paine", "torresDelPaine"));
+                                    break;
+                            }
+                    
+                            // Show or hide the additional options based on the selection
+                            comunasDiv.className = (selectedRegion.value !== "") ? "" : "hidden";
+                        }
+                    </script>
+                    
+                    </body>
+                    </html>
+                </form>
             </div>
 
             <div class="smart-id">

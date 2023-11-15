@@ -8,7 +8,6 @@ from django.db import IntegrityError
 import time
 import datetime
 import requests
-from django.http import HttpResponse
 from app.models import *
 from app.forms import EmailAuthenticationForm
 
