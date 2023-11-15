@@ -9,6 +9,9 @@
 <body>
     <div class="formulario"> 
         <h1>Registro</h1>
+
+        {{error}}
+        
         <form action="/registro/" method="POST">
             {% csrf_token %}
             <div class="username">

@@ -3,11 +3,14 @@ from django.template import Template, Context
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.db import IntegrityError
 import time
 import datetime
 import requests
 from django.http import HttpResponse
 from app.models import *
+from app.forms import EmailAuthenticationForm
 
 def presentacion(request):
     return render(request, 'main/Presentacion.html')
@@ -15,22 +18,48 @@ def presentacion(request):
 def registro(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password_confirm']:
-            user = UserProfile.objects.create_user(username=request.POST['username'],
-                                                    email=request.POST['email'],
-                                                    password=request.POST['password'],
-                                                    region=request.POST['region'],
-                                                    comuna=request.POST['comuna'],
-                                                    Smart_id=request.POST['smartid'],
-                                                    Smart_tkn=request.POST['smarttoken']
-                                                    )
-            user.save()
-            return redirect('consumo')
+            try:
+                user = UserProfile.objects.create_user(username=request.POST['username'],
+                                                        email=request.POST['email'],
+                                                        password=request.POST['password'],
+                                                        region=request.POST['region'],
+                                                        comuna=request.POST['comuna'],
+                                                        Smart_id=request.POST['smartid'],
+                                                        Smart_tkn=request.POST['smarttoken']
+                                                        )
+                user.save()
+                login(request, user)
+                return redirect('consumo')
+            except IntegrityError:
+                return render(request, 'main/registro.html', {
+                    'error': 'El usuario ya existe'
+                    })
         else:
-            return HttpResponse('Las contraseñas no concuerdan.')
-    return render(request, 'main/registro.html')
+            return render(request, 'main/registro.html', {
+                'error': 'Las contraseñas no concuerdan.'
+                })
+    else:
+        return render(request, 'main/registro.html')
 
 def login(request):
     print(request.POST)
+    if request.method == 'POST':
+        form = EmailAuthenticationForm(request, request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('consumo')
+            else:
+                return render(request, 'main/login2.html', {
+                    'error': 'Usuario o contraseña incorrecta'
+                })
+    else:
+        return render(request, 'main/login2.html')
+
     return render(request, 'main/login2.html')
 
 def consumo(request):
@@ -133,6 +162,7 @@ def clima(request):
     'ciudad': ciudad
     }
     return render(request, 'main/clima.html', contextClima)
+
 def estadoLuz(request):
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
