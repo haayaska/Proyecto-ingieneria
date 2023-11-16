@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'miembros',
 ]
 
+AUTHENTICATION_BACKENDS = ['app.authentication.CustomEmailBackend']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

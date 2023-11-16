@@ -9,7 +9,7 @@ import time
 import datetime
 import requests
 from app.models import *
-from app.forms import EmailAuthenticationForm
+from app.authentication import CustomEmailBackend
 
 def presentacion(request):
     return render(request, 'main/Presentacion.html')
@@ -41,24 +41,22 @@ def registro(request):
         return render(request, 'main/registro.html')
 
 def login(request):
-    print(request.POST)
     if request.method == 'POST':
-        form = EmailAuthenticationForm(request, request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
 
-            if user is not None:
-                login(request, user)
-                return redirect('consumo')
-            else:
-                return render(request, 'main/login2.html', {
+        if user is not None:
+            login(request, user)
+            return redirect('consumo')
+        
+        else:
+            return render(request, 'main/login2.html', {
                     'error': 'Usuario o contraseña incorrecta'
                 })
     else:
         return render(request, 'main/login2.html')
-
+    
     return render(request, 'main/login2.html')
 
 def consumo(request):
