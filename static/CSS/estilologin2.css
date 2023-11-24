@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: seagreen;
+    background: /* #03bb85 */ url("{% static 'img/background-login.jpg' %}");
     background-size: cover;
     background-position: center;
 }
@@ -131,7 +131,7 @@ body{
     text-decoration: underline;
 }
 
-/* SEPARADOR NO BORRAR POR FAVOR */
+/* SEPARADOR NO BORRAR */
 
 .modal {
     display: none;
