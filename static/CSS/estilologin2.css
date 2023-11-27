@@ -12,7 +12,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: /* #03bb85 */ url("{% static 'img/background-login.jpg' %}");
+    background: #03bb85 /* url("{% static 'img/background-login.jpg' %}") */;
     background-size: cover;
     background-position: center;
 }
