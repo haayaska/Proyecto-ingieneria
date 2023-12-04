@@ -1,0 +1,74 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(to right, rgba(67, 233, 122, 0) 0%, #38f9d600 100%), url(https://www.repsol.com/content/dam/repsol-corporate/es/energia-e-innovacion/ahorrar%20energ%C3%ADa.jpg.transform/rp-rendition-md/image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.formulario {
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondos */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div[class^="contraseña"] {
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Bordes redondos */
+}
+
+button {
+    background-color: #3498db; /* Azul brillante */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px; /* Bordes redondos */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo para el dropdown de la región */
+#region {
+    margin-bottom: 10px;
+}
+
+/* Estilo para el contenedor de las comunas */
+#comunas {
+    margin-bottom: 15px;
+}
+
+/* Estilo para los cuadros Smart ID y Smart Token */
+.smart-id,
+.smart-token {
+    margin-bottom: 15px;
+}
+
+/* Estilo para mensajes de error */
+#error {
+    color: #e74c3c; /* Rojo */
+    text-align: center;
+    margin-bottom: 10px;
+}
