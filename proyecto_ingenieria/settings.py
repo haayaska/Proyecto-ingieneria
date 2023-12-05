@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'app',
 ]
 
-AUTHENTICATION_BACKENDS = ['app.authentication.CustomEmailBackend']
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -78,6 +76,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'proyecto_ingenieria.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_USER_MODEL = 'app.UserProfile'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
