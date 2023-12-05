@@ -9,7 +9,6 @@ import time
 import datetime
 import requests
 from app.models import *
-from app.authentication import CustomEmailBackend
 
 def presentacion(request):
     return render(request, 'main/Presentacion.html')
@@ -17,36 +16,27 @@ def presentacion(request):
 def registro(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password_confirm']:
-            try:
-                user = UserProfile.objects.create_user(username=request.POST['username'],
-                                                        email=request.POST['email'],
-                                                        password=request.POST['password'],
-                                                        region=request.POST['region'],
-                                                        comuna=request.POST['comuna'],
-                                                        Smart_id=request.POST['smartid'],
-                                                        Smart_tkn=request.POST['smarttoken']
-                                                        )
-                user.save()
-                login(request, user)
-                return redirect('consumo')
-            except IntegrityError:
-                return render(request, 'main/registro.html', {
-                    'error': 'El usuario ya existe'
-                    })
-        else:
-            return render(request, 'main/registro.html', {
-                'error': 'Las contraseñas no concuerdan.'
-                })
-    else:
-        return render(request, 'main/registro.html')
+            user = UserProfile.objects.create_user(username=request.POST['username'],
+                                                    email=request.POST['email'],
+                                                    password=request.POST['password'],
+                                                    region=request.POST['region'],
+                                                    comuna=request.POST['comuna'],
+                                                    Smart_id=request.POST['smartid'],
+                                                    Smart_tkn=request.POST['smarttoken'],
+                                                    consumo=0
+                                                    )
+            user.save()
 
-def login(request):
+def login_view(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        print(username, password)
+        user = authenticate(username=username, password=password) #
+        print(user)
 
         if user is not None:
+            print('entrando')
             login(request, user)
             return redirect('consumo')
         
@@ -56,8 +46,6 @@ def login(request):
                 })
     else:
         return render(request, 'main/login2.html')
-    
-    return render(request, 'main/login2.html')
 
 def consumo(request):
     #aqui esta la api de openweather:
