@@ -1,0 +1,41 @@
+ body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #333; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url(https://www.xtrafondos.com/wallpapers/resized/montanas-en-lago-y-bosque-3834.jpg?s=large) center/cover
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px; 
+    border-radius: 15px; 
+    text-align: center;
+}
+
+h1 {
+    color: #4caf50; 
+    margin-bottom: 10px; 
+}
+
+p {
+    color: #555; 
+    margin-bottom: 20px; 
+    font-weight: bold; 
+}
+
+p:contains("Encendido") {
+    color: #4caf50; 
+}
+
+p:contains("Apagado") {
+    color: #d32f2f; 
+}

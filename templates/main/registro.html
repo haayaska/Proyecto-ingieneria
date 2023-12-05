@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="estiloslogin.css">
+    <link rel="stylesheet" href="{% static 'CSS/estiloregistro.css' %}">
 </head>
 <body>
     <div class="formulario"> 
@@ -15,23 +16,26 @@
         <form action="/registro/" method="POST">
             {% csrf_token %}
             <div class="username">
-                <input name='username' type="text" required>
                 <label for="">Nombre de Usuario</label>
+                <input name='username' type="text" required>
+                
             </div>
 
             <div class="email">
-                <input name='email' type="text" required>
                 <label for="">Correo electronico</label>
+                <input name='email' type="text" required>
+                
             </div>
 
             <div class="contraseña">
-                <input name='password' type="password" id="contraseña" required>
+                
                 <label for="contraseña">Contraseña</label>
+                <input name='password' type="password" id="contraseña" required>
             </div>
             
             <div class="contraseña">
-                <input name='password_confirm' type="password" id="confirmarContraseña" required>
-                <label for="confirmarContraseña">Confirmar contraseña</label>
+                 
+                
             </div>
         
             <div id="form-container">
@@ -59,7 +63,7 @@
                     <div id="comunas" class="hidden">
                         <label for="models">Selecciona una comuna:</label>
                         <select id="models" name="models">
-                            <!-- Additional options will be added here -->
+                          
                         </select>
                     </div>
                     
@@ -466,22 +470,23 @@
             </div>
 
             <div class="smart-id">
-                <input name='smartid' type="text" id="smartId" required>
                 <label for="smartId">Smart ID</label>
+                <input name='smartid' type="text" id="smartId" required>
+                
             </div>
 
             <div class="smart-token">
-                <input name='smarttoken' type="text" id="smartToken" required>
                 <label for="smartToken">Smart Token</label>
+                <input name='smarttoken' type="text" id="smartToken" required>
+               
             </div>
-            
 
-            <button onclick="return validarContraseña();">Enviar</button>
+            <button type="submit">Registrarse</button>
+
+
         </form>
 
-        <div class="registro">
-            <a href="registro.html">Registro</a>
-        </div>
+        
     </div>
 </body>
 </html>
