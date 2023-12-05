@@ -16,18 +16,25 @@ def presentacion(request):
 def registro(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['password_confirm']:
-            user = UserProfile.objects.create_user(username=request.POST['username'],
-                                                    email=request.POST['email'],
-                                                    password=request.POST['password'],
-                                                    region=request.POST['region'],
-                                                    comuna=request.POST['comuna'],
-                                                    Smart_id=request.POST['smartid'],
-                                                    Smart_tkn=request.POST['smarttoken'],
-                                                    consumo=0
-                                                    )
+            user = UserProfile.objects.create_user(
+                username=request.POST['username'],
+                email=request.POST['email'],
+                password=request.POST['password'],
+                region=request.POST['region'],
+                comuna=request.POST['comuna'],
+                Smart_id=request.POST['smartid'],
+                Smart_tkn=request.POST['smarttoken'],
+                consumo=0
+            )
             user.save()
-    
             return render(request, 'registro.html')
+        else:
+            error_message = "Las contraseñas no coinciden."
+            return render(request, 'registro.html', {'error': error_message})
+    else:
+        # Manejar el caso en el que el método HTTP es GET
+        return render(request, 'registro.html')
+
 
 def login_view(request):
     if request.method == 'POST':
