@@ -8,7 +8,7 @@ from django.db import IntegrityError
 import time
 import datetime
 import requests
-from app.models import *
+
 
 def presentacion(request):
     return render(request, 'main/Presentacion.html')
@@ -115,7 +115,7 @@ def consumo(request):
     'numero':numero,
     }
     return render(request, 'main/consumo.html', context)
-
+'''
 def clima(request):
     lat = '-33.0658'
     lon = '-71.3289' #cordenadas de villa alemana como prueba
@@ -148,7 +148,7 @@ def clima(request):
     'descripcion': descripcion,
     'ciudad': ciudad
     }
-    return render(request, 'main/clima.html', contextClima)
+    return render(request, 'main/clima.html', contextClima)'''
 
 def estadoLuz(request):
     deviceId = str(settings.DEVICE_ID)
@@ -177,11 +177,17 @@ def apagadoAuto(request, onOrOff):
     response = requests.post(url,json=body, headers={"Authorization": tk})
     return 
 
+
+
 def contador(request, estadoLuz):
     contador= 0
     while estadoLuz == 'on':
         contado+=1
-        time.sleep(60)
+        print(contador)
+        time.sleep(1)
     consumo= contador*15
     return(consumo)
 
+#1 necesito que la funcion contador guarde en una base de datos el consumo conecetada a los usuarion como, nose
+#2 Que la funcion corra en segundo plano
+#3 que lo muestre en pantalla uwu

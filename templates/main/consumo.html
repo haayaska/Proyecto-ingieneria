@@ -1,3 +1,5 @@
+<!-- tu_template.html -->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,6 +39,15 @@
             margin-top: 20px;
         }
 
+        #consumo {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #f03939;
+        }
+
         .encendido {
             color: #f03939;
         }
@@ -53,6 +64,13 @@
 <body>
     <div class="info-box">
         <h1>Consumo</h1>
+        <div id="consumo">
+            {% if consumo1 %}
+                Consumo: {{ consumo1 }}
+            {% else %}
+                <p class="error">No se pudo calcular el consumo</p>
+            {% endif %}
+        </div>
         <h2>Estado luz <span class="{% if estado == 'encendido' %}encendido{% else %}apagado{% endif %}">{{ estado }}</span></h2>
         <p>Ciudad: {{ ciudad }} - Temperatura: {{ temperatura }}°C</p>
     </div>

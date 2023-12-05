@@ -24,7 +24,6 @@ urlpatterns = [
     path("presentacion/",presentacion),
     path("",presentacion),
     path('consumo/',consumo, name='consumo'),
-    path('miembros/', include(('django.contrib.auth.urls', 'auth'), namespace='auth')),
     path ('login/', login_view),
     path('registro/', registro)
 ]
