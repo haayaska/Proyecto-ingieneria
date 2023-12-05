@@ -169,6 +169,7 @@ def estadoLuz(request):
     contextAmpolleta= {"estado": datos.get('switch', {}).get('value')}
     return contextAmpolleta
 
+
 def apagadoAuto(request, onOrOff):
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
@@ -185,4 +186,12 @@ def apagadoAuto(request, onOrOff):
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/commands'
     response = requests.post(url,json=body, headers={"Authorization": tk})
     return 
+
+def contador(request, estadoLuz):
+    contador= 0
+    while estadoLuz == 'on':
+        contado+=1
+        time.sleep(60)
+    consumo= contador*15
+    return(consumo)
 
