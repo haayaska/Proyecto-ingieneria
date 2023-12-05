@@ -32,7 +32,7 @@ def registro(request):
             error_message = "Las contraseñas no coinciden."
             return render(request, 'registro.html', {'error': error_message})
     else:
-        # Manejar el caso en el que el método HTTP es GET
+        # Manejar el caso en el que el método HTTP es GET.
         return render(request, 'registro.html')
 
 
