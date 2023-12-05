@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'proyecto_ingenieria',
     'app',
-    'miembros',
 ]
 
 AUTHENTICATION_BACKENDS = ['app.authentication.CustomEmailBackend']
@@ -58,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 ROOT_URLCONF = 'proyecto_ingenieria.urls'
 
 TEMPLATES = [

@@ -5,3 +5,4 @@ from .models import UserProfile
 class UserProfileAdmin(admin.ModelAdmin):
     list_display=('username', 'Smart_tkn', 'Smart_id')
     search_fields = ('username',)
+    

@@ -108,21 +108,21 @@ def consumo(request):
     response = requests.get(url, headers={"Authorization": tk})
     datos = response.json()
     estado= datos.get('switch', {}).get('value')
-    '''if (numero== 0) and (estado == "on") and (8<=hora_actual<21):
+    if estado== 'off':
+        estado= 'Apagado'
+    else:
+        estado= 'Encendido'
+    if (numero== 0) and (estado == "Encendido") and (8<=hora_actual<21):
         off= 'off'
         apagadoAuto(request, off)
-        estado = "off"
-    elif (numero!= 0) and (estado == "off"):
-        on= 'on'
-        apagadoAuto(request, on)
-        estado= "on"'''
+        estado = "Apagado"
     #diccionario context con todos los datos para la pagina de consumo
     context = {
     'temperatura': temperatura_celcius,
     'descripcion': descripcion,
     'ciudad': ciudad,
     'estado': estado,
-    'numero':numero
+    'numero':numero,
     }
     return render(request, 'main/consumo.html', context)
 
@@ -185,5 +185,4 @@ def apagadoAuto(request, onOrOff):
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/commands'
     response = requests.post(url,json=body, headers={"Authorization": tk})
     return 
-
 
