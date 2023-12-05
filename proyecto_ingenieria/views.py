@@ -8,6 +8,7 @@ from django.db import IntegrityError
 import time
 import datetime
 import requests
+from app.models import UserProfile
 
 
 def presentacion(request):
@@ -28,6 +29,7 @@ def registro(request):
             )
             user.save()
             return render(request,'main/registro.html')
+        
         else:
             error_message = "Las contraseñas no coinciden."
             return render(request,'main/registro.html', {'error': error_message})
