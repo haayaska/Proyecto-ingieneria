@@ -26,6 +26,8 @@ def registro(request):
                                                     consumo=0
                                                     )
             user.save()
+    
+            return render(request, 'registro.html')
 
 def login_view(request):
     if request.method == 'POST':
