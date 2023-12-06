@@ -57,9 +57,9 @@ def login_view(request):
         return render(request, 'main/login2.html')
 
 def consumo(request):
-    #aqui esta la api de openweather:
-    lat = '-33.0658'
-    lon = '-71.3289' 
+    #Conexion con la Api de OpenWeather
+    lat = '-33.0333'
+    lon = '-71.6667' 
     api_key = str(settings.OPENWEATHERKEY)
     url1 = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
     response = requests.get(url1)
@@ -98,7 +98,7 @@ def consumo(request):
             descripcion= (tipos_climas[llave])[0]
             numero= (tipos_climas[llave])[1]
     ciudad = datas.get('name')
-    #aqui esta la api de SMARTTHINGS:
+    #Conexion Con la Api de Smart Things
     deviceId = str(settings.DEVICE_ID)
     tk= 'Bearer ' + str(settings.SMART_THINGSTK)
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/components/main/capabilities/switch/status'
@@ -113,11 +113,9 @@ def consumo(request):
         off= 'off'
         apagadoAuto(request, off)
         estado = "Apagado"
-    #aqui va la funcion del consumo
-    
+    #Funcion del consumo
     usuario= UserProfile.objects.get(username="johna")
     contador= 0
-    print(usuario.consumo)
     while estado == 'on':
         contado+=1
         time.sleep(60)
@@ -160,12 +158,5 @@ def apagadoAuto(request, onOrOff):
     }
     url= f'https://api.smartthings.com/v1/devices/{deviceId}/commands'
     response = requests.post(url,json=body, headers={"Authorization": tk})
-    return 
+    return (response)
 
-
-
-
-
-#1 necesito que la funcion contador guarde en una base de datos el consumo conecetada a los usuarion como, nose
-#2 Que la funcion corra en segundo plano
-#3 que lo muestre en pantalla 
