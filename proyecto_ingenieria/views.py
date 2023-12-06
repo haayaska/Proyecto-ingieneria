@@ -31,7 +31,7 @@ def registro(request):
         
         else:
             error_message = "Las contraseñas no coinciden."
-            return render(request, 'registro.html', {'error': error_message})
+            return render(request, 'main/registro.html', {'error': error_message})
     else:
         return render(request, 'main/registro.html')
 
