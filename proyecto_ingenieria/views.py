@@ -27,13 +27,12 @@ def registro(request):
                 consumo=0
             )
             user.save()
-            return render(request,'main/registro.html')
+            return redirect('consumo')
         
         else:
             error_message = "Las contraseñas no coinciden."
             return render(request, 'registro.html', {'error': error_message})
     else:
-        # Manejar el caso en el que el método HTTP es GET.
         return render(request, 'registro.html')
 
 
