@@ -10,7 +10,6 @@ import datetime
 import requests
 from app.models import UserProfile
 
-
 def presentacion(request):
     return render(request, 'main/Presentacion.html')
 
@@ -28,14 +27,13 @@ def registro(request):
                 consumo=0
             )
             user.save()
-            return render(request,'main/registro.html')
-        
+            return render(request, 'registro.html')
         else:
             error_message = "Las contraseñas no coinciden."
-            return render(request,'main/registro.html', {'error': error_message})
+            return render(request, 'registro.html', {'error': error_message})
     else:
         # Manejar el caso en el que el método HTTP es GET.
-        return render(request,'main/registro.html')
+        return render(request, 'registro.html')
 
 
 def login_view(request):
@@ -124,40 +122,6 @@ def consumo(request):
     'numero':numero,
     }
     return render(request, 'main/consumo.html', context)
-'''
-def clima(request):
-    lat = '-33.0658'
-    lon = '-71.3289' #cordenadas de villa alemana como prueba
-    api_key = str(settings.OPENWEATHERKEY)
-    url = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}'
-    response = requests.get(url)
-    data = response.json()
-    temperatura_kelvin = data.get('main', {}).get('temp') #esto sacara del json el valor de la temperatura en kelvin
-    temperatura_celcius = round(temperatura_kelvin - 273.15) #transformara la temperatura de kelvin a celcius
-    descripcion = data.get('weather', [])[0].get('description')
-    tipos_climas = {"clear sky": ('Despejado', 0), # 0 significa "Apaga las luces"
-                    "partly cloudy": ('Parcialmente Nublado', 1 ),
-                    'overcast clouds': ('Nublado'),
-                    "clouds": ('Nublado', 1 ),
-                    "fog": ('Niebla', 1),
-                    "mist": ('Neblina', 1 ),
-                    "drizzle": ('Llovizna', 2), # 2 significa "Intenta apagar otros dispositivos para ahorrar energia"
-                    "rain": ('Lluvioso', 2),
-                    'moderate rain': ('Lluvia Moderada', 2),
-                    "showers": ('Chubascos', 2),
-                    "snow": ('Nieve', 3 ), # 3 Si utilizas dispositivos de calefaccion apaga las luces cuando sea necesario
-                    "thunderstorm": ('Tormenta Electrica', 4),
-                      }
-    for llave in tipos_climas:
-        if llave==descripcion:
-            descripcion= (tipos_climas[llave])[0]
-    ciudad = data.get('name')
-    contextClima = {
-    'temperatura': temperatura_celcius,
-    'descripcion': descripcion,
-    'ciudad': ciudad
-    }
-    return render(request, 'main/clima.html', contextClima)'''
 
 def estadoLuz(request):
     deviceId = str(settings.DEVICE_ID)
@@ -187,16 +151,18 @@ def apagadoAuto(request, onOrOff):
     return 
 
 
-
 def contador(request, estadoLuz):
+    usuario= UserProfile.objects.get(username="johna")
+    print(usuario)
     contador= 0
     while estadoLuz == 'on':
         contado+=1
         print(contador)
-        time.sleep(1)
+        time.sleep(60)
     consumo= contador*15
     return(consumo)
 
+
 #1 necesito que la funcion contador guarde en una base de datos el consumo conecetada a los usuarion como, nose
 #2 Que la funcion corra en segundo plano
-#3 que lo muestre en pantalla uwu
+#3 que lo muestre en pantalla 

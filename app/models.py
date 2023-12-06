@@ -29,7 +29,6 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     consumo = models.DecimalField(decimal_places=0, max_digits=60, default=0)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
-
     objects = UserProfileManager()
 
     USERNAME_FIELD = 'username'
