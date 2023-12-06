@@ -63,8 +63,8 @@
     <div class="info-box">
         <h1>Consumo</h1>
         <div id="consumo">
-            {% if consumo1 %}
-                Consumo: {{ consumo1 }}
+            {% if consumo1 > -1 %}
+                {{ consumo1 }} [W]
             {% else %}
                 <p class="error">No se pudo calcular el consumo</p>
             {% endif %}

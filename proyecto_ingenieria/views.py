@@ -113,13 +113,24 @@ def consumo(request):
         off= 'off'
         apagadoAuto(request, off)
         estado = "Apagado"
-    #diccionario context con todos los datos para la pagina de consumo
+    #aqui va la funcion del consumo
+    usuario= UserProfile.objects.get(username="johna")
+    contador= 0
+    print(usuario.consumo)
+    while estado == 'on':
+        contado+=1
+        time.sleep(60)
+    usuario.consumo+= contador*15
+    usuario.save()
+
+    #Diccionario con todos los datos para el template
     context = {
     'temperatura': temperatura_celcius,
     'descripcion': descripcion,
     'ciudad': ciudad,
     'estado': estado,
     'numero':numero,
+    'consumo1': usuario.consumo
     }
     return render(request, 'main/consumo.html', context)
 
@@ -151,16 +162,7 @@ def apagadoAuto(request, onOrOff):
     return 
 
 
-def contador(request, estadoLuz):
-    usuario= UserProfile.objects.get(username="johna")
-    print(usuario)
-    contador= 0
-    while estadoLuz == 'on':
-        contado+=1
-        print(contador)
-        time.sleep(60)
-    consumo= contador*15
-    return(consumo)
+
 
 
 #1 necesito que la funcion contador guarde en una base de datos el consumo conecetada a los usuarion como, nose
