@@ -114,6 +114,7 @@ def consumo(request):
         apagadoAuto(request, off)
         estado = "Apagado"
     #aqui va la funcion del consumo
+    
     usuario= UserProfile.objects.get(username="johna")
     contador= 0
     print(usuario.consumo)
