@@ -63,8 +63,8 @@
                 </select>
             
                 <div id="comunas" class="hidden">
-                    <label for="models">Selecciona una comuna:</label>
-                    <select id="models" name="models">
+                    <label for="comuna">Selecciona una comuna:</label>
+                    <select id="comuna" name="comuna">
                       
                     </select>
                 </div>
@@ -91,7 +91,7 @@
             function elegirComuna() {
                 var selectedRegion = document.getElementById("region");
                 var comunasDiv = document.getElementById("comunas");
-                var modelsSelect = document.getElementById("models");
+                var modelsSelect = document.getElementById("comuna");
 
                 while (modelsSelect.options.length > 0) {
                     modelsSelect.options.remove(0);

@@ -27,7 +27,8 @@ def registro(request):
                 consumo=0
             )
             user.save()
-            return render(request, 'registro.html')
+            return render(request,'main/registro.html')
+        
         else:
             error_message = "Las contraseñas no coinciden."
             return render(request, 'registro.html', {'error': error_message})
